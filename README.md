@@ -8,7 +8,7 @@ This project came about from a desire to have a simple administrative interface 
 - Works with standard Laravel user authentication.
 - Drops in as a simple dependency via composer.
 - Fully overriddable by custom scripting in order to extend as needed.
-- Clean & simple administrative interface.
+- Clean & simple interface.
 - Extensible to support any type of content data.
 - Support common model relationships.
 - Community driven.
