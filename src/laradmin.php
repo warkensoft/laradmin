@@ -12,10 +12,12 @@ return [
 	*/
 
 	// Middleware required to access the laradmin area
-	'middleware'   => null,
+	'middleware'   => ['auth'],
 
 	// The base path for the laradmin area
 	'adminpath'    => 'laradmin',
+
+	'layout' => 'laradmin::layouts.admin',
 
 	// How many items per page are shown on CRUD indexes
 	'index-length' => 10,
@@ -26,7 +28,7 @@ return [
 		'\\App\\User' => [
 			'path'       => 'users',
 			'route'      => 'users',
-			'controller' => 'UsersController',
+//			'controller' => 'UsersController',
 			'nav_title'  => 'Users',
 			'plural'     => 'Users',
 			'singular'   => 'User',

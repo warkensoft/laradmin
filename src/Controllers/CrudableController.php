@@ -2,20 +2,23 @@
 
 namespace Warkensoft\Laradmin\Controllers;
 
-use App\Http\Requests\CrudableRequest;
+use Warkensoft\Laradmin\Requests\CrudableRequest;
 use App\Http\Controllers\Controller;
-use App\Jobs\StoreUploadedFile;
-use App\Models\Media;
-use App\Services\Crudable;
 use Illuminate\Http\UploadedFile;
+
+//use App\Jobs\StoreUploadedFile;
+//use App\Models\Media;
+//use App\Services\Crudable;
 
 class CrudableController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @param CrudableRequest $crudableRequest
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
     public function index(CrudableRequest $crudableRequest)
     {
     	$model = $crudableRequest->modelName();
@@ -47,16 +50,18 @@ class CrudableController extends Controller
 
 	    $query->orderBy($sortKey, $sortDir);
 
-    	$entries = $query->paginate( config('cms.index-length') );
+    	$entries = $query->paginate( config('laradmin.index-length') );
 
     	return view()->first(['admin.' . $model::Crudable()->route . '.index', 'admin.crudable.index'], compact('model', 'entries'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @param CrudableRequest $crudableRequest
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
     public function create(CrudableRequest $crudableRequest)
     {
 	    $modelName = $crudableRequest->modelName();
@@ -64,12 +69,13 @@ class CrudableController extends Controller
         return view('admin.crudable.create', compact('modelName', 'modelInstance'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param CrudableRequest $crudableRequest
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
     public function store(CrudableRequest $crudableRequest)
     {
 	    $model = $crudableRequest->modelName();

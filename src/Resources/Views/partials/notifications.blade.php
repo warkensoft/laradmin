@@ -1,6 +1,6 @@
 @section('notifications')
 
-    @if (!empty($errors))
+    @if (!empty($errors) AND count($errors) > 0)
         <div class="row notifications notifications-warning">
             <div class="col-sm-12">
                 <div class="alert alert-warning ">

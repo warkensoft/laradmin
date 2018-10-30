@@ -1,4 +1,4 @@
-@extends('laradmin::layouts.admin')
+@extends( config('laradmin.layout') )
 
 @section('content')
     <div class="card shadow">

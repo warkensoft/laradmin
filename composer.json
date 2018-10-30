@@ -22,7 +22,10 @@
 	"laravel": {
 	  "providers": [
 		"Warkensoft\\Laradmin\\Provider"
-	  ]
+	  ],
+	  "aliases": {
+		"Laradmin": "Warkensoft\\Laradmin\\Facade"
+	  }
 	}
   }
 }

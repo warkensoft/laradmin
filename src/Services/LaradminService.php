@@ -1,16 +1,36 @@
 <?php namespace Warkensoft\Laradmin\Services;
 
+use Warkensoft\Laradmin\Controllers\CrudableController;
 use Illuminate\Support\Facades\Route;
 
 class LaradminService
 {
-	public static function Routes()
+	public function Routes()
 	{
 		foreach( config('laradmin.crudable') as $model=>$config )
 		{
 			$route = $config['route'];
-			$controller = $config['controller'] ?: 'CrudableController';
-			Route::resource( $route, $controller,['as' => 'admin'] );
+			$controller = isset($config['controller']) ?: CrudableController::class;
+			Route::resource( $route, $controller, ['as' => config('laradmin.adminpath')] );
 		}
+	}
+
+	public function IsCurrentRoute($modelFields)
+	{
+		$route = explode('.', request()->route()->getName(), 3);
+		return $modelFields['route'] == $route[1];
+	}
+
+	public function GetModelFromRoute()
+	{
+		$route = explode('.', request()->route()->getName(), 3);
+
+		foreach( config('laradmin.crudable') as $model => $params )
+		{
+			if($params['route'] == $route[1])
+				return $model;
+		}
+
+		return '';
 	}
 }

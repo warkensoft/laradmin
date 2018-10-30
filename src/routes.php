@@ -1,15 +1,18 @@
 <?php
 
-Route::group([
-	'prefix'=>config('laradmin.adminpath'),
-	'middleware'=>config('laradmin.middleware'),
-	'namespace'=>'Warkensoft\\Laradmin\\Controllers',
-], function () {
+Route::group(['middleware' => ['web']], function () {
 
-	Route::get('/', function () { return redirect()->to('/' . config('laradmin.adminpath') . '/dashboard/'); });
-	Route::get('dashboard', 'DashboardController@index')
-	     ->name('laradmin.dashboard');
+	Route::group([
+		'prefix'=>config('laradmin.adminpath'),
+		'middleware'=>config('laradmin.middleware'),
+	], function () {
 
-	\Warkensoft\Laradmin\Services\LaradminService::Routes();
+		Route::get('/', function () { return redirect()->to('/' . config('laradmin.adminpath') . '/dashboard/'); });
+		Route::get('dashboard', 'Warkensoft\\Laradmin\\Controllers\\DashboardController@index')
+		     ->name(config('laradmin.adminpath') . '.dashboard');
+
+		Laradmin::Routes();
+
+	});
 
 });

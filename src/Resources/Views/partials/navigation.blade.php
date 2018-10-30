@@ -5,13 +5,13 @@
             <ul class="nav flex-column nav-pills">
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                    <a class="nav-link {{ request()->routeIs(config('laradmin.adminpath') . '.dashboard') ? 'active' : '' }}" href="{{ route(config('laradmin.adminpath') . '.dashboard') }}">Dashboard</a>
                 </li>
 
-                @foreach(config('cms.crudable') as $model)
+                @foreach(config('laradmin.crudable') as $model => $parameters)
                     <li class="nav-item">
-                        <a class="nav-link {{ $model::Crudable()->IsCurrentRoute() ? 'active' : '' }}"
-                           href="{{ route('admin.' . $model::Crudable()->route . '.index') }}">{{ $model::Crudable()->nav_title }}</a>
+                        <a class="nav-link" class="{{ Laradmin::IsCurrentRoute($parameters) ? 'active' : '' }}"
+                           href="{{ route(config('laradmin.adminpath') . '.' . $parameters['route'] . '.index') }}">{{ $parameters['nav_title'] }}</a>
                     </li>
                 @endforeach
 
