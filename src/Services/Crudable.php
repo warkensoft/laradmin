@@ -4,21 +4,13 @@ use Illuminate\Support\Facades\Route;
 
 class Crudable
 {
-
-	public static function Routes()
-	{
-		foreach( config('laradmin.crudable') as $model )
-		{
-			$name = $model::Crudable()->route;
-			$controller = $model::Crudable()->controller ?: 'CrudableController';
-			Route::resource( $name, $controller,['as' => 'admin'] );
-		}
-	}
-
+	/** @var string */
+	private $modelname;
 
 	/** @var array */
 	private $parameters;
 
+	/** @var array */
 	private $defaults = [
 		'path'      => '',
 		'route'     => '',
@@ -47,34 +39,36 @@ class Crudable
 		],
 	];
 
-
-
-
-	public function __construct( $parameters = [] )
+	/**
+	 * @param $modelname
+	 *
+	 * @return Crudable
+	 * @throws \Exception
+	 */
+	public static function Get( $modelname )
 	{
+		$config = config('laradmin.crudable');
+		if(isset($config[$modelname]))
+			return new static($modelname, $config[$modelname]);
+		else
+			throw new \Exception('Unknown model ' . $modelname);
+	}
+
+	/**
+	 * Crudable constructor.
+	 *
+	 * @param string $modelname
+	 * @param array  $parameters
+	 */
+	private function __construct( $modelname, $parameters = [] )
+	{
+		$this->modelname = $modelname;
 		$this->parameters = collect( array_merge($this->defaults, $parameters) );
 	}
 
-	public static function FieldValue( $entry, $field )
+	public function modelname()
 	{
-		$model = get_class($entry);
-		$fieldParams = collect( $model::Crudable()->fields )->keyBy( 'field' )->get( $field );
-
-		if( isset($fieldParams['relation']['type']) )
-		{
-			if($fieldParams['relation']['type'] == 'one-to-many')
-			{
-				return $entry->{$fieldParams['relation']['name']}->{$fieldParams['relation']['label']};
-			}
-		}
-
-		return $entry->$field;
-	}
-
-	public function IsCurrentRoute()
-	{
-		$route = explode('.', request()->route()->getName(), 3);
-		return $this->route == $route[1];
+		return $this->modelname;
 	}
 
 	public function __get( $param )
@@ -82,14 +76,4 @@ class Crudable
 		return $this->parameters->get($param);
 	}
 
-	public static function GetModelFromRoute()
-	{
-		$route = explode('.', request()->route()->getName(), 3);
-
-		foreach( config('laradmin.crudable') as $model )
-		{
-			if($model::Crudable()->route == $route[1])
-				return $model;
-		}
-	}
 }

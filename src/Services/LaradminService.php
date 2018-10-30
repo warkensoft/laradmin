@@ -15,13 +15,29 @@ class LaradminService
 		}
 	}
 
-	public function IsCurrentRoute($modelFields)
+	public function IsCurrentRoute($testRoute)
 	{
 		$route = explode('.', request()->route()->getName(), 3);
-		return $modelFields['route'] == $route[1];
+		return $testRoute == $route[1];
 	}
 
-	public function GetModelFromRoute()
+	public function FieldValue( $entry, $field )
+	{
+		$crudable = Crudable::Get( '\\' . get_class($entry) );
+		$fieldParams = collect( $crudable->fields )->keyBy( 'field' )->get( $field );
+
+		if( isset($fieldParams['relation']['type']) )
+		{
+			if($fieldParams['relation']['type'] == 'one-to-many')
+			{
+				return $entry->{$fieldParams['relation']['name']}->{$fieldParams['relation']['label']};
+			}
+		}
+
+		return $entry->$field;
+	}
+
+	public function GetModelNameFromRoute()
 	{
 		$route = explode('.', request()->route()->getName(), 3);
 
@@ -32,5 +48,18 @@ class LaradminService
 		}
 
 		return '';
+	}
+
+	public function GetModelFromRoute()
+	{
+		$route = explode('.', request()->route()->getName(), 3);
+
+		foreach( config('laradmin.crudable') as $model => $params )
+		{
+			if($params['route'] == $route[1])
+				return Crudable::Get($model);
+		}
+
+		return null;
 	}
 }

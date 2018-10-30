@@ -14,10 +14,15 @@ class Provider extends ServiceProvider
     public function boot()
     {
 	    $this->publishes([
-		    __DIR__.'/laradmin.php' => config_path('laradmin.php'),
-		    __DIR__.'/Resources/Lang' => resource_path('lang/vendor/laradmin'),
+		    __DIR__.'/laradmin.php' => config_path('laradmin.php')
+	    ], 'config');
+	    $this->publishes([
 		    __DIR__.'/Resources/Views' => resource_path('views/vendor/laradmin'),
-	    ]);
+	    ], 'views');
+	    $this->publishes([
+		    __DIR__.'/Resources/Lang' => resource_path('lang/vendor/laradmin'),
+	    ], 'translations');
+	    
 	    $this->loadRoutesFrom(__DIR__.'/routes.php');
 	    $this->loadMigrationsFrom(__DIR__.'/Migrations');
 	    $this->loadTranslationsFrom(__DIR__.'/Resources/Lang', 'laradmin');

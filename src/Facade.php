@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Facade as BaseFacade;
+use Warkensoft\Laradmin\Services\Crudable;
 use Warkensoft\Laradmin\Services\LaradminService;
 
 /**
@@ -9,7 +10,7 @@ use Warkensoft\Laradmin\Services\LaradminService;
  *
  * @method static string Routes()
  * @method static string IsCurrentRoute($modelFields)
- * @method static string GetModelFromRoute()
+ * @method static Crudable GetModelFromRoute()
  *
  * @package Warkensoft\Laradmin
  */

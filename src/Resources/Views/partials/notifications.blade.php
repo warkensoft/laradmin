@@ -5,7 +5,7 @@
             <div class="col-sm-12">
                 <div class="alert alert-warning ">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>@lang('message.warning')</strong> :
+                    <strong>@lang('laradmin::laradmin.warning')</strong>:
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -32,7 +32,7 @@
             <div class="col-sm-12">
                 <div class="alert alert-danger ">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>@lang('message.error')</strong> :
+                    <strong>@lang('laradmin::laradmin.error')</strong>:
                     {!! nl2br($message) !!}
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="col-sm-12">
                 <div class="alert alert-warning ">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>@lang('message.warning')</strong> :
+                    <strong>@lang('laradmin::laradmin.warning')</strong>:
                     {!! nl2br($message) !!}
                 </div>
             </div>

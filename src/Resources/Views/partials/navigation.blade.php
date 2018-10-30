@@ -10,7 +10,7 @@
 
                 @foreach(config('laradmin.crudable') as $model => $parameters)
                     <li class="nav-item">
-                        <a class="nav-link" class="{{ Laradmin::IsCurrentRoute($parameters) ? 'active' : '' }}"
+                        <a class="nav-link {{ Laradmin::IsCurrentRoute($parameters['route']) ? 'active' : '' }}"
                            href="{{ route(config('laradmin.adminpath') . '.' . $parameters['route'] . '.index') }}">{{ $parameters['nav_title'] }}</a>
                     </li>
                 @endforeach

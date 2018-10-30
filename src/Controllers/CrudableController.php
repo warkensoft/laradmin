@@ -21,10 +21,10 @@ class CrudableController extends Controller
 	 */
     public function index(CrudableRequest $crudableRequest)
     {
-    	$model = $crudableRequest->modelName();
+    	$crudable = $crudableRequest->model();
 
     	/** @var \Illuminate\Database\Eloquent\Builder $query */
-    	$query = $model::query();
+    	$query = $crudable->modelname()::query();
 
 	    if($filtered = $crudableRequest->get('filtered'))
 	    {
@@ -36,8 +36,8 @@ class CrudableController extends Controller
 
 	    if($search = $crudableRequest->get('search'))
 	    {
-	    	$query = $query->where(function ($q) use ($model, $search) {
-	    		$fields = collect($model::Crudable()->fields);
+	    	$query = $query->where(function ($q) use ($crudable, $search) {
+	    		$fields = collect($crudable->fields);
 	    		$q = $q->where($fields->shift()['field'], 'LIKE', '%' . $search . '%');
 			    $fields->each(function ($field) use ($q, $search) {
 					$q->orWhere($field['field'], 'LIKE', '%' . $search . '%');
@@ -45,14 +45,17 @@ class CrudableController extends Controller
 		    });
 	    }
 
-	    $sortKey = $crudableRequest->has('sort') ? $crudableRequest->get('sort') : $model::Crudable()->sort['key'];
-	    $sortDir = $crudableRequest->has('dir') ? $crudableRequest->get('dir') : $model::Crudable()->sort['dir'];
+	    $sortKey = $crudableRequest->has('sort') ? $crudableRequest->get('sort') : $crudable->sort['key'];
+	    $sortDir = $crudableRequest->has('dir') ? $crudableRequest->get('dir') : $crudable->sort['dir'];
 
 	    $query->orderBy($sortKey, $sortDir);
 
     	$entries = $query->paginate( config('laradmin.index-length') );
 
-    	return view()->first(['admin.' . $model::Crudable()->route . '.index', 'admin.crudable.index'], compact('model', 'entries'));
+    	return view()->first([
+    		'laradmin::' . $crudable->route . '.index',
+		    'laradmin::crudable.index'
+	    ], compact('crudable', 'entries'));
     }
 
 	/**
@@ -64,9 +67,8 @@ class CrudableController extends Controller
 	 */
     public function create(CrudableRequest $crudableRequest)
     {
-	    $modelName = $crudableRequest->modelName();
-	    $modelInstance = new $modelName;
-        return view('admin.crudable.create', compact('modelName', 'modelInstance'));
+	    $crudable = $crudableRequest->model();
+        return view('laradmin::crudable.create', compact('crudable'));
     }
 
 	/**
@@ -78,35 +80,38 @@ class CrudableController extends Controller
 	 */
     public function store(CrudableRequest $crudableRequest)
     {
-	    $model = $crudableRequest->modelName();
-	    $validatedData = $crudableRequest->validatedData()->generalData();
-	    $modelInstance = $model::create($validatedData);
+	    $crudable = $crudableRequest->model();
+	    $validatedData = $crudableRequest->validatedData();
 
-	    // Related data
-	    $relatedData = $crudableRequest->relationshipData();
-	    foreach($relatedData as $key => $value)
-	    {
-		    $modelInstance->$key()->sync($value);
-	    }
+	    dd($validatedData);
 
-	    // Upload data
-	    $uploadData = $crudableRequest->uploadData();
+	    $modelInstance = $crudable->modelname()::create($validatedData);
 
-	    /**
-	     * @var string $key
-	     * @var UploadedFile $uploadedFile
-	     */
-	    foreach($uploadData as $key => $uploadedFile)
-	    {
-			$path = $uploadedFile->store('documents');
-			$modelInstance->update([
-				$key => $path,
-				$key . '_name' => $uploadedFile->getClientOriginalName(),
-				$key . '_type' => $uploadedFile->getClientMimeType(),
-			]);
-	    }
+//	    // Related data
+//	    $relatedData = $crudableRequest->relationshipData();
+//	    foreach($relatedData as $key => $value)
+//	    {
+//		    $modelInstance->$key()->sync($value);
+//	    }
+//
+//	    // Upload data
+//	    $uploadData = $crudableRequest->uploadData();
+//
+//	    /**
+//	     * @var string $key
+//	     * @var UploadedFile $uploadedFile
+//	     */
+//	    foreach($uploadData as $key => $uploadedFile)
+//	    {
+//			$path = $uploadedFile->store('documents');
+//			$modelInstance->update([
+//				$key => $path,
+//				$key . '_name' => $uploadedFile->getClientOriginalName(),
+//				$key . '_type' => $uploadedFile->getClientMimeType(),
+//			]);
+//	    }
 
-	    return redirect()->route( 'admin.' . $model::Crudable()->route . '.index')
+	    return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
 	                     ->with('success', 'Success');
     }
 
@@ -118,9 +123,9 @@ class CrudableController extends Controller
      */
     public function edit($model_id, CrudableRequest $crudableRequest)
     {
-	    $modelName = $crudableRequest->modelName();
-	    $modelInstance = $modelName::findOrFail($model_id);
-	    return view('admin.crudable.edit', compact('modelName', 'modelInstance'));
+	    $crudable = $crudableRequest->model();
+	    $modelInstance = $crudable->modelname()::findOrFail($model_id);
+	    return view('laradmin::crudable.edit', compact('crudable', 'modelInstance'));
     }
 
     /**
@@ -154,7 +159,7 @@ class CrudableController extends Controller
 		    ]);
 	    }
 
-	    return redirect()->route( 'admin.' . $modelName::Crudable()->route . '.index')
+	    return redirect()->route( config('laradmin.adminpath') . '.' . $modelName::Crudable()->route . '.index')
 	                     ->with('success', 'Success');
     }
 
@@ -169,7 +174,7 @@ class CrudableController extends Controller
 	    $modelName = $crudableRequest->modelName();
 	    $modelInstance = $modelName::findOrFail($model_id);
 	    $modelInstance->delete();
-	    return redirect()->route( 'admin.' . $modelName::Crudable()->route . '.index')
+	    return redirect()->route( config('laradmin.adminpath') . '.' . $modelName::Crudable()->route . '.index')
 	                     ->with('success', 'Success');
     }
 

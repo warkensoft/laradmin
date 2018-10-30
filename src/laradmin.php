@@ -12,12 +12,12 @@ return [
 	*/
 
 	// Middleware required to access the laradmin area
-	'middleware'   => ['auth'],
+	'middleware' => [ 'auth' ],
 
 	// The base path for the laradmin area
-	'adminpath'    => 'laradmin',
+	'adminpath'  => 'laradmin',
 
-	'layout' => 'laradmin::layouts.admin',
+	'layout'       => 'laradmin::layouts.admin',
 
 	// How many items per page are shown on CRUD indexes
 	'index-length' => 10,
@@ -26,19 +26,20 @@ return [
 	'crudable'     => [
 
 		'\\App\\User' => [
-			'path'       => 'users',
-			'route'      => 'users',
-//			'controller' => 'UsersController',
-			'nav_title'  => 'Users',
-			'plural'     => 'Users',
-			'singular'   => 'User',
-			'fields'     => [
+			'path'      => 'users',
+			'route'     => 'users',
+			//			'controller' => 'UsersController',
+			'nav_title' => 'Users',
+			'plural'    => 'Users',
+			'singular'  => 'User',
+			'fields'    => [
 				[
 					'field'       => 'name',
 					'type'        => 'input',
 					'label'       => 'User Name',
 					'placeholder' => 'Somebody Smith',
 					'default'     => '',
+					'rules'       => 'required',
 				],
 				[
 					'field'       => 'email',
@@ -46,6 +47,7 @@ return [
 					'label'       => 'Email Address',
 					'placeholder' => 'somebody@example.com',
 					'default'     => '',
+					'rules'       => 'required',
 				],
 				[
 					'field'       => 'password',
@@ -53,6 +55,7 @@ return [
 					'label'       => 'Password',
 					'placeholder' => 'Enter password here...',
 					'default'     => '',
+					'rules'       => 'confirmed',
 				],
 				[
 					'field'       => 'password_confirmation',
@@ -60,17 +63,13 @@ return [
 					'label'       => 'Confirm Password',
 					'placeholder' => 'Repeat password here...',
 					'default'     => '',
+					'rules'       => '',
 				],
 			],
-			'index'      => [
+			'index'     => [
 				'id'    => 'ID',
 				'name'  => 'Name',
 				'email' => 'Email Address',
-			],
-			'rules'      => [
-				'name'     => 'required',
-				'email'    => 'required',
-				'password' => 'confirmed',
 			],
 		],  // End of User definition
 
