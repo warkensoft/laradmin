@@ -1,0 +1,28 @@
+{
+  "name": "warkensoft/laradmin",
+  "description": "A simple, powerful, drop-in administrative interface for Laravel.",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+	{
+	  "name": "James Warkentin",
+	  "email": "james@warkensoft.net"
+	}
+  ],
+  "autoload": {
+	"psr-4": {
+	  "Warkensoft\\Laradmin\\": "src"
+	}
+  },
+  "require-dev": {
+  },
+  "require": {
+  },
+  "extra": {
+	"laravel": {
+	  "providers": [
+		"Warkensoft\\Laradmin\\Provider"
+	  ]
+	}
+  }
+}

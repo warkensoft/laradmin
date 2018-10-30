@@ -3,6 +3,17 @@ A simple, powerful, drop-in administrative interface for Laravel.
 
 This project came about from a desire to have a simple administrative interface that could be dropped into a new or existing Laravel based site to manage any/all editable content.
 
+## Installation
+
+With composer, simply run the following on the commandline:
+
+```
+$ composer require warkensoft/laradmin 1.*
+$ php artisan vendor:publish --provider="Warkensoft\Laradmin\Provider"
+```
+
+Then run ``
+
 ## Objectives & Goals
 
 - Works with standard Laravel user authentication.
