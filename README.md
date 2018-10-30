@@ -8,7 +8,7 @@ This project came about from a desire to have a simple administrative interface 
 With composer, simply run the following on the commandline:
 
 ```
-$ composer require warkensoft/laradmin 1.*
+$ composer require warkensoft/laradmin
 $ php artisan vendor:publish --provider="Warkensoft\Laradmin\Provider"
 ```
 
