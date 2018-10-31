@@ -4,11 +4,11 @@ A simple, powerful, drop-in administrative interface for Laravel.
 
 This project came about from a desire to have a simple administrative interface that could be dropped into a new or existing Laravel based site to manage any/all editable content.
 
-- [Installation](./#installation)
-- [Configuration Options](./#configuration-options)
-- [Field Configuration](./#field-configuration)
-- [Project Objectives & Goals](./#project-objectives--goals)
-- [Architecture Ideas](./#architecture-ideas)
+- [Installation](https://github.com/warkensoft/laradmin/#installation)
+- [Configuration Options](https://github.com/warkensoft/laradmin/#configuration-options)
+- [Field Configuration](https://github.com/warkensoft/laradmin/#field-configuration)
+- [Project Objectives & Goals](https://github.com/warkensoft/laradmin/#project-objectives--goals)
+- [Architecture Ideas](https://github.com/warkensoft/laradmin/#architecture-ideas)
 
 
 ## Installation
