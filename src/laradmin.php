@@ -25,47 +25,63 @@ return [
 	// Models that are CRUDable
 	'crudable'     => [
 
+		// Sample entry for a standard laravel user record.
 		'\\App\\User' => [
-			'path'      => 'users',
-			'route'     => 'users',
-			//			'controller' => 'UsersController',
-			'nav_title' => 'Users',
-			'plural'    => 'Users',
-			'singular'  => 'User',
+			'path'      => 'users', // The path to the model under /laradmin/
+			'route'     => 'users', // The route name used for the model
+			'nav_title' => 'Users', // The title used in the navigation sidebar
+			'plural'    => 'Users', // The plural form of the model
+			'singular'  => 'User',  // The singular form of the model
+
+			// Fields used for model data
 			'fields'    => [
-				\Warkensoft\Laradmin\Fields\Input::Setup([
+				[
+					'type'        => \Warkensoft\Laradmin\Fields\Input::class,
 					'name'        => 'name',
 					'label'       => 'User Name',
 					'placeholder' => 'Somebody Smith',
 					'default'     => '',
 					'rules'       => 'required',
-				]),
-				\Warkensoft\Laradmin\Fields\Input::Setup([
+				],
+				[
+					'type'        => \Warkensoft\Laradmin\Fields\Input::class,
 					'name'        => 'email',
 					'label'       => 'Email Address',
 					'placeholder' => 'somebody@example.com',
 					'default'     => '',
 					'rules'       => 'required',
-				]),
-				\Warkensoft\Laradmin\Fields\Password::Setup([
+				],
+				[
+					'type'        => \Warkensoft\Laradmin\Fields\Password::class,
 					'name'        => 'password',
 					'label'       => 'Password',
 					'placeholder' => 'Enter password here...',
 					'default'     => '',
 					'rules'       => 'confirmed',
-				]),
-				\Warkensoft\Laradmin\Fields\Password::Setup([
+					'searchable'  => false,
+				],
+				[
+					'type'        => \Warkensoft\Laradmin\Fields\Password::class,
 					'name'        => 'password_confirmation',
 					'label'       => 'Confirm Password',
 					'placeholder' => 'Repeat password here...',
 					'default'     => '',
 					'rules'       => '',
-				]),
+					'searchable'  => false,
+				],
 			],
+
+			// Define what columns should appear on the model index. field=>label pairs
 			'index'     => [
 				'id'    => 'ID',
 				'name'  => 'Name',
 				'email' => 'Email Address',
+			],
+
+			// Define the default sort order for the model index.
+			'sort'      => [
+				'key' => 'name',    // Sort field name
+				'dir' => 'asc',     // Sort field direction
 			],
 		],  // End of User definition
 

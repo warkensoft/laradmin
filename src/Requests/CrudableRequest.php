@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Collection;
 use Warkensoft\Laradmin\Facade as Laradmin;
+use Warkensoft\Laradmin\Fields\FieldContract;
 use Warkensoft\Laradmin\Services\Crudable;
 
 class CrudableRequest extends FormRequest
@@ -12,101 +13,37 @@ class CrudableRequest extends FormRequest
 		return Laradmin::GetModelNameFromRoute();
 	}
 
-	public function model()
+	public function crudable()
 	{
 		return Laradmin::GetModelFromRoute();
 	}
 
 	public function validatedData()
 	{
-		$fields = $this->model()->fields;
+		$fields = collect($this->crudable()->fields);
 
-		$rules = collect($fields)->pluck('rules', 'field')
-		                         ->all();
+		$rules = $fields->pluck('rules', 'name')
+		                ->all();
+
 		$this->validate( $rules );
 
-		$fields = $this->assignValues($fields);
-		$separated = $this->separateRelations($fields);
-
-		return $separated->get('direct')
-		                 ->pluck('value', 'field')
-		                 ->all();
+		return $this->assignValues($fields)->toArray();
 	}
 
-	private function assignValues( $fields = [] )
+	private function assignValues( Collection $fields )
 	{
-		return collect($fields)->map(function ($field) {
-
-			if( $this->has($field['field']) )
-			{
-				$value = $this->get($field['field']);
-				$field['value'] = $value;
-			}
-			else
-			{
-				$field['value'] = $field['default'];
-			}
-
-			return $field;
+		return $fields->keyBy('name')->map(function ($field) {
+			return $this->buildFieldObject($field)->value($this);
 		});
 	}
 
 	/**
-	 * @param array $fields
-	 *
-	 * @return Collection
+	 * @param array $fieldParams
+	 * @return FieldContract
 	 */
-	private function separateRelations($fields = [])
+	private function buildFieldObject( $fieldParams )
 	{
-		return collect( $fields )->map( function ( $field ) {
-			$field['relationship_status'] = isset( $field['relation']['type'] ) ? 'relation' : 'direct';
-			return $field;
-		} )
-		->groupBy('relationship_status');
-	}
-
-	public function modelData()
-	{
-		$crudable = $this->model();
-
-		$fieldTypes = $this->fieldTypes($crudable->fields);
-		dd($fieldTypes);
-
-		$values = collect($crudable->fields)
-			->filter(function ($field) {
-				if( isset($field['relation']['type']) )
-					if($field['relation']['type'] == 'many-to-many')
-						return false;
-				return true;
-			})
-			->map(function ($field) {
-				$field['value'] = $this->has($field['field']) ? $this->get($field['field']) : $field['default'];
-				return $field;
-			})
-			->pluck('value', 'field')
-			->all();
-
-		return $values;
-	}
-
-	public function relationshipData()
-	{
-		$crudable = $this->model();
-		$fields = collect($crudable->fields)
-			->filter(function ($field) {
-				if( isset($field['relation']['type']) )
-					if($field['relation']['type'] == 'many-to-many')
-						return true;
-				return false;
-			})
-			->map(function ($field) {
-				$field['value'] = $this->get($field['field']);
-				return $field;
-			})
-			->pluck('value', 'field')
-			->all();
-
-		return $fields;
+		return new $fieldParams['type']($fieldParams);
 	}
 
     /**

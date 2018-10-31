@@ -9,12 +9,12 @@
 
         <div class="card-body">
 
-            <form method="POST" action="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.update', $modelInstance->id) }}">
+            <form method="POST" action="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.update', $crudable->model()->id) }}">
                 @csrf
                 @method('PUT')
 
-                @foreach($crudable->fields as $key=>$data)
-                    @include('laradmin::partials.fields.' . $data['type'], $data+['value'=>$modelInstance->{$data['field']}])
+                @foreach($crudable->fields() as $field)
+                    @include($field->view(), ['value'=>$crudable->findValueFor($field->name)])
                 @endforeach
 
                 <div class="form-group row mb-0">

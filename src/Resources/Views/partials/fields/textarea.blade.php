@@ -1,13 +1,12 @@
 <div class="form-group row">
-    <label for="field-{{ $field }}" class="col-md-3 col-form-label text-md-right">{{ $label }}</label>
+    <label for="field-{{ $field->name }}" class="col-md-3 col-form-label text-md-right">{{ $field->label }}</label>
 
     <div class="col-md-9">
-        <textarea id="field-{{ $field }}" type="text" class="form-control{{ $errors->has($field) ? ' is-invalid' : '' }}" {{ !empty($disabled) ? 'disabled' : '' }}
-                  name="{{ $field }}" placeholder="{{ $placeholder }}" rows="{{ !empty($rows) ? $rows : 6 }}"
-                {{ !empty($required) ? 'required' : '' }}>{{ old($field) ?: (!empty($value) ? $value : $default) }}</textarea>
-
-        @if ($errors->has($field))
-            <span class="invalid-feedback"><strong>{{ $errors->first($field) }}</strong></span>
+        <textarea id="field-{{ $field->name }}" type="text" class="form-control{{ $errors->has($field->name) ? ' is-invalid' : '' }}"
+               name="{{ $field->name }}" placeholder="{{ !empty($field->placeholder) ? $field->placeholder : '' }}" {{ !empty($field->required) ? 'required' : '' }}
+                {{ !empty($field->disabled) ? 'disabled' : '' }} rows="{{ !empty($rows) ? $rows : 6 }}">{{ old($field->name) ?: (isset($value) ? $value : '') }}</textarea>
+        @if ($errors->has($field->name))
+            <span class="invalid-feedback"><strong>{{ $errors->first($field->name) }}</strong></span>
         @endif
     </div>
 </div>

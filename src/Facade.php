@@ -9,8 +9,11 @@ use Warkensoft\Laradmin\Services\LaradminService;
  * Class Facade
  *
  * @method static string Routes()
+ *
  * @method static string IsCurrentRoute($modelFields)
+ *
  * @method static Crudable GetModelFromRoute()
+ * @see LaradminService::GetModelFromRoute()
  *
  * @package Warkensoft\Laradmin
  */

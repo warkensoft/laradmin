@@ -2,7 +2,7 @@
 
 class Input extends BaseField
 {
-	public function viewname()
+	public function view()
 	{
 		return 'laradmin::partials.fields.input';
 	}

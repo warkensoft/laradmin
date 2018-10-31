@@ -1,10 +1,11 @@
 <?php namespace Warkensoft\Laradmin\Fields;
 
-abstract class BaseField implements \ArrayAccess {
-
-	use ArrayAccessTrait;
+abstract class BaseField implements FieldContract {
 
 	protected $parameters = [];
+
+	// Return this field from filterValue() if the data for the field should not be saved.
+	const DONT_SAVE_STRING = '### EXCLUDE VALUE FROM ELOQUENT SAVE ###';
 
 	public static function Setup( $parameters = [] )
 	{
@@ -21,7 +22,11 @@ abstract class BaseField implements \ArrayAccess {
 		return $this->parameters[$fieldname];
 	}
 
-	public function viewname()
+	public function __set( $fieldname, $value ) {
+		$this->parameters[$fieldname] = $value;
+	}
+
+	public function view()
 	{
 		return 'laradmin::partials.fields.input';
 	}
@@ -29,6 +34,16 @@ abstract class BaseField implements \ArrayAccess {
 	public function parameters()
 	{
 		return $this->parameters;
+	}
+
+	public function value(\Illuminate\Foundation\Http\FormRequest $request)
+	{
+		return $request->get( $this->parameters['name'] );
+	}
+
+	public function filterValue($value)
+	{
+		return $value;
 	}
 
 }
