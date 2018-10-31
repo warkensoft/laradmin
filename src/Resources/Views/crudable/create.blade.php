@@ -12,8 +12,8 @@
             <form method="POST" action="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.store') }}">
                 @csrf
 
-                @foreach($crudable->fields as $key=>$data)
-                    @include('laradmin::partials.fields.' . $data['type'], $data)
+                @foreach($crudable->fields as $key=>$field)
+                    @include($field->viewname(), compact('field'))
                 @endforeach
 
                 <div class="form-group row mb-0">

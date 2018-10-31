@@ -33,38 +33,34 @@ return [
 			'plural'    => 'Users',
 			'singular'  => 'User',
 			'fields'    => [
-				[
-					'field'       => 'name',
-					'type'        => 'input',
+				\Warkensoft\Laradmin\Fields\Input::Setup([
+					'name'        => 'name',
 					'label'       => 'User Name',
 					'placeholder' => 'Somebody Smith',
 					'default'     => '',
 					'rules'       => 'required',
-				],
-				[
-					'field'       => 'email',
-					'type'        => 'input',
+				]),
+				\Warkensoft\Laradmin\Fields\Input::Setup([
+					'name'        => 'email',
 					'label'       => 'Email Address',
 					'placeholder' => 'somebody@example.com',
 					'default'     => '',
 					'rules'       => 'required',
-				],
-				[
-					'field'       => 'password',
-					'type'        => 'password',
+				]),
+				\Warkensoft\Laradmin\Fields\Password::Setup([
+					'name'        => 'password',
 					'label'       => 'Password',
 					'placeholder' => 'Enter password here...',
 					'default'     => '',
 					'rules'       => 'confirmed',
-				],
-				[
-					'field'       => 'password_confirmation',
-					'type'        => 'password',
+				]),
+				\Warkensoft\Laradmin\Fields\Password::Setup([
+					'name'        => 'password_confirmation',
 					'label'       => 'Confirm Password',
 					'placeholder' => 'Repeat password here...',
 					'default'     => '',
 					'rules'       => '',
-				],
+				]),
 			],
 			'index'     => [
 				'id'    => 'ID',
