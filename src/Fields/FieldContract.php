@@ -7,4 +7,5 @@ interface FieldContract
 	public function parameters();
 	public function value(\Illuminate\Foundation\Http\FormRequest $request);
 	public function filterValue($value);
+	public function presentationValue($model);
 }

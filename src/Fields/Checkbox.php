@@ -6,4 +6,9 @@ class Checkbox extends BaseField
 	{
 		return 'laradmin::partials.fields.checkbox';
 	}
+
+	public function presentationValue($entry)
+	{
+		return $entry->{$this->parameters['name']} ? 'true' : '';
+	}
 }

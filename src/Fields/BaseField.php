@@ -46,4 +46,9 @@ abstract class BaseField implements FieldContract {
 		return $value;
 	}
 
+	public function presentationValue($entry)
+	{
+		return $entry->{$this->parameters['name']};
+	}
+
 }

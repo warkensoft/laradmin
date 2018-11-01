@@ -21,22 +21,6 @@ class LaradminService
 		return $testRoute == $route[1];
 	}
 
-	public function FieldValue( $entry, $field )
-	{
-		$crudable = Crudable::Get( '\\' . get_class($entry) );
-		$fieldParams = collect( $crudable->fields )->keyBy( 'field' )->get( $field );
-
-		if( isset($fieldParams['relation']['type']) )
-		{
-			if($fieldParams['relation']['type'] == 'one-to-many')
-			{
-				return $entry->{$fieldParams['relation']['name']}->{$fieldParams['relation']['label']};
-			}
-		}
-
-		return $entry->$field;
-	}
-
 	public function GetModelNameFromRoute()
 	{
 		$route = explode('.', request()->route()->getName(), 3);

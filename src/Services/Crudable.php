@@ -144,12 +144,15 @@ class Crudable
 	{
 		if(is_null($params))
 		{
-			$params = collect($this->parameters['fields'])->keyBy('name')
-			                                              ->get($name);
+			$params = collect($this->parameters['fields'])
+				->keyBy('name')
+				->get($name);
 		}
-
-		$classname = $params['type'];
-		return new $classname($params);
+		if(!is_null($params))
+		{
+			$classname = $params['type'];
+			return new $classname($params);
+		}
 	}
 
 	public function findValueFor( $fieldname )

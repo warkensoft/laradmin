@@ -155,6 +155,7 @@ The `type` variable defines a Field class in the Laradmin interface. The followi
 - `\Warkensoft\Laradmin\Fields\Input::class`
 - `\Warkensoft\Laradmin\Fields\Password::class`
 - `\Warkensoft\Laradmin\Fields\Textarea::class`
+- `\Warkensoft\Laradmin\Fields\SelectFromMany::class`
 
 You may define additional classes in your own application as needed, so long as they conform to the `FieldContract` 
 interface. In this way you can extend the Laradmin platform with any additional types of fields you might need.

@@ -25,8 +25,14 @@
 
             @foreach($entries as $entry)
                 <tr>
-                    @foreach($crudable->index as $field=>$label)
-                        <td>{{ Laradmin::FieldValue($entry, $field) }}</td>
+                    @foreach($crudable->index as $fieldname=>$label)
+                        <td>
+                            @if( $field = $crudable->field($fieldname) )
+                                {{ $field->presentationValue($entry) }}
+                            @else
+                                {{ $entry->$fieldname }}
+                            @endif
+                        </td>
                     @endforeach
 
                     <td style="text-align: right;">
