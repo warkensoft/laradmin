@@ -2,7 +2,12 @@
 
 A simple, powerful, drop-in administrative interface for Laravel.
 
-This project came about from a desire to have a simple administrative interface that could be dropped into a new or existing Laravel based site to manage any/all editable content.
+This project came about from a desire to have a simple administrative interface that could be dropped into a new or 
+existing Laravel based site to manage any/all editable content.
+
+![Laradmin Screenshot](/laradmin.jpg?raw=true "Laradmin Screenshot")
+
+## Contents
 
 - [Installation](https://github.com/warkensoft/laradmin/#installation)
 - [Configuration Options](https://github.com/warkensoft/laradmin/#configuration-options)
