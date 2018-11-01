@@ -1,7 +1,7 @@
 {
   "name": "warkensoft/laradmin",
   "description": "A simple, powerful, drop-in administrative interface for Laravel.",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
 	{

@@ -9,11 +9,11 @@ existing Laravel based site to manage any/all editable content.
 
 ## Contents
 
-- [Installation](https://github.com/warkensoft/laradmin/#installation)
-- [Configuration Options](https://github.com/warkensoft/laradmin/#configuration-options)
-- [Field Configuration](https://github.com/warkensoft/laradmin/#field-configuration)
-- [Project Objectives & Goals](https://github.com/warkensoft/laradmin/#project-objectives--goals)
-- [Architecture Ideas](https://github.com/warkensoft/laradmin/#architecture-ideas)
+- [Installation](https://github.com/warkensoft/laradmin#installation)
+- [Configuration Options](https://github.com/warkensoft/laradmin#configuration-options)
+- [Field Configuration](https://github.com/warkensoft/laradmin#field-configuration)
+- [Project Objectives & Goals](https://github.com/warkensoft/laradmin#project-objectives--goals)
+- [Architecture Ideas](https://github.com/warkensoft/laradmin#architecture-ideas)
 
 
 ## Installation
