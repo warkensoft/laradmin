@@ -21,7 +21,7 @@ existing Laravel based site to manage any/all editable content.
 With composer, simply run the following on the commandline:
 
 ```
-$ composer require warkensoft/laradmin
+$ composer require warkensoft/laradmin:1.*
 $ php artisan vendor:publish --provider="Warkensoft\Laradmin\Provider" --tag=config
 ```
 
