@@ -152,10 +152,12 @@ These generally follow a pattern such as the following:
 
 The `type` variable defines a Field class in the Laradmin interface. The following classes currently exist.
 
-- `\Warkensoft\Laradmin\Fields\Input::class`
-- `\Warkensoft\Laradmin\Fields\Password::class`
-- `\Warkensoft\Laradmin\Fields\Textarea::class`
-- `\Warkensoft\Laradmin\Fields\SelectFromMany::class`
+- [\Warkensoft\Laradmin\Fields\Input::class](docs/field-types.md#input-field)
+- [\Warkensoft\Laradmin\Fields\Password::class](docs/field-types.md#password-field)
+- [\Warkensoft\Laradmin\Fields\Textarea::class](docs/field-types.md#textarea-field)
+- [\Warkensoft\Laradmin\Fields\SelectFromMany::class](docs/field-types.md#select-from-many-related-field)
+- [\Warkensoft\Laradmin\Fields\ImageUpload::class](docs/field-types.md#imageupload-field)
+- [\Warkensoft\Laradmin\Fields\Summernote::class](docs/field-types.md#summernote-field)
 
 You may define additional classes in your own application as needed, so long as they conform to the `FieldContract` 
 interface. In this way you can extend the Laradmin platform with any additional types of fields you might need.
@@ -166,35 +168,8 @@ This is done through a simple `view()` method on the class which returns a strin
 Second, they have the ability to filter and modify the submitted model data before it is saved, in order to make any 
 necessary changes. 
 
-#### Field `name`
-
-Provide a string with the name of the field. This should normally match the field name on the model and in the database.
-
-#### Field `label`
-
-This will be used as the label for the field on the form.
-
-#### Field `placeholder`
-
-This will be used as the HTML placeholder for the field on the form.
-
-#### Field `default`
-
-This will be used as the default value for the field on the form.
-
-#### Field `rules`
-
-The rules for how the field is to be validated. Follows standard Laravel validation terms as described here:
-https://laravel.com/docs/5.7/validation#available-validation-rules
-
-#### Field `searchable`
-
-Set to `false` to prevent Laradmin from searching the values in this field.
-
-#### Additional Fields
-
-Other fields can be declared in the array, and will be passed through for use in the view. For example, the `Textarea`
-field type also supports a `rows` parameter which is used (when given) to define how many rows are shown in the textarea.
+See the [Laradmin Field Types & Configuration](docs/field-types.md) for specific details on how to configure each of
+these types of fields.
 
 
 ## Project Objectives & Goals

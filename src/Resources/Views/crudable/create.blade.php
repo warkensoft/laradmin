@@ -9,7 +9,9 @@
 
         <div class="card-body">
 
-            <form method="POST" action="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.store') }}">
+            <form method="POST"
+                  action="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.store') }}"
+                  enctype="multipart/form-data">
                 @csrf
 
                 @foreach($crudable->fields() as $key=>$field)
@@ -30,4 +32,10 @@
     </div>
 @endsection
 
+@section('head')
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+@endsection
 
+@section('scripts')
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+@endsection

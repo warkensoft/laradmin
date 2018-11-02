@@ -45,7 +45,7 @@ class CrudableController extends Controller
 
 	    $query->orderBy($sortKey, $sortDir);
 
-    	$entries = $query->paginate( config('laradmin.index-length') );
+    	$entries = $query->paginate( config('laradmin.index-length') )->appends($crudableRequest->all());
 
     	return view()->first([
     		'laradmin::' . $crudable->route . '.index',

@@ -51,11 +51,17 @@
             @endforeach
         </table>
 
-        <div>
-            {{ $entries->links() }}
+        <div class="text-center">
+            {{ $entries->render() }}
         </div>
 
     </div>
 @endsection
 
-
+@section('head')
+    <style>
+        .text-center .pagination {
+            justify-content: center;
+        }
+    </style>
+@endsection
