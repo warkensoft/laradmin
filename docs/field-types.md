@@ -5,9 +5,9 @@ The following field types are available to you for use in your configuration fil
 - [\Warkensoft\Laradmin\Fields\Input::class](field-types.md#input-field)
 - [\Warkensoft\Laradmin\Fields\Password::class](field-types.md#password-field)
 - [\Warkensoft\Laradmin\Fields\Textarea::class](field-types.md#textarea-field)
-- [\Warkensoft\Laradmin\Fields\ImageUpload::class](field-types.md#imageupload-field)
 - [\Warkensoft\Laradmin\Fields\Summernote::class](field-types.md#summernote-field)
-- [\Warkensoft\Laradmin\Fields\SelectFromMany::class](field-types.md#select-from-many-related-field)
+- [\Warkensoft\Laradmin\Fields\ImageUpload::class](field-types.md#imageupload-field)
+- [\Warkensoft\Laradmin\Fields\SelectFromMany::class](field-types.md#selectfrommany-field)
 
 
 ## Input Field
@@ -83,10 +83,24 @@ the regular input box fields, it supports a `rows` field.
 Optionally define how many rows the textarea will display. Default: 6
 
 
+## Sumernote Field
+
+	'type'        => \Warkensoft\Laradmin\Fields\Summernote::class,
+	'name'        => 'body',
+	'label'       => 'Content',
+	'placeholder' => 'Write something amazing!',
+	'default'     => '',
+	'rules'       => 'required',
+	
+The summernote field accepts the same parameters as the regular [textarea field](field-types.md#textarea-field). 
+It presents the user with a WYSIWYG input area where text may be entered and formatted by using the excellent 
+[Summernote](https://summernote.org/) library.
+
+
 ## ImageUpload Field
 
 	'type'        => \Warkensoft\Laradmin\Fields\ImageUpload::class,
-	'name'       => 'feature_image',
+	'name'        => 'feature_image',
 	'label'       => 'Feature Image',
 	'placeholder' => '',
 	'default'     => '',
@@ -113,6 +127,62 @@ uploaded to `/storage/app/public/something.jpg`, but when viewed on the website 
 **IMPORTANT!!** In order for this to work you must create a symlink from the public folder to your storage folder using the
 Laravel artisan command `php artisan storage:link`. This will create a symbolic link from `public/storage` to 
 `storage/app/public`
+
+
+## SelectFromMany Field
+
+	'type'        => \Warkensoft\Laradmin\Fields\SelectFromMany::class,
+	'name'       => 'author_id',
+	'label'       => 'Author ID',
+	'placeholder' => '',
+	'default'     => '',
+	'rules'       => 'integer',
+	'relation'    => [
+		'type'   => 'one-to-many',
+		'model'  => \App\User::class,
+		'method' => 'author',
+		'key'    => 'id',
+		'label'  => 'name',
+	]
+
+This field presents the user with a selection dropdown containing a list of related models. A field set up with the 
+example parameters above would work well on a `Page` model to display a list of users to choose an author.
+
+The type of field used on the model should match the primary key of the related model. The model class should also be set
+up with a `belongsTo()` relationship pointed to the related model.
+
+For example, if using the parameters above in a `Page` class, one would need to have an `UNSIGNED INT author_id` field
+in the database and a method like the following on the model:
+
+	public function author()
+	{
+		return $this->belongsTo(User::class, 'author_id');
+    }
+
+#### Relation Fields
+
+#### `type`
+
+Defines what type of relationship is used. Current types are:
+
+- one-to-many
+
+#### `model`
+
+The related model class name.
+
+#### `method`
+
+The name of the method in the current class which describes the `belongsTo()` relationship. 
+
+#### `key`
+
+The primary key of the related model. This will corrospond to the field name on the current model. 
+
+#### `label`
+
+The name of the field used in displaying the data from this relationship on indexes. For the example above, the `Pages`
+index will display the `$user->name` field in a column related to each page.
 
 
 ## Additional Parameters
