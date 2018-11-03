@@ -7,6 +7,9 @@ existing Laravel based site to manage any/all editable content.
 
 ![Laradmin Screenshot](https://s.warkior.com/laradmin_218E54BD.png "Laradmin Screenshot")
 
+**IMPORTANT WARNING!** This package is a work in progress. Over time, things may change. We will do our best not to
+break things, but please use it at your own risk.
+
 ## Contents
 
 - [Installation](#installation)
