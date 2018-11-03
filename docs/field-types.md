@@ -183,10 +183,3 @@ The primary key of the related model. This will corrospond to the field name on 
 
 The name of the field used in displaying the data from this relationship on indexes. For the example above, the `Pages`
 index will display the `$user->name` field in a column related to each page.
-
-
-## Additional Parameters
-
-Other fields can be declared in the array, and will be passed through for use in the view. For example, the `Textarea`
-field type also supports a `rows` parameter which is used (when given) to define how many rows are shown in the textarea.
- 
