@@ -5,15 +5,23 @@ The following field types are available to you for use in your configuration fil
 - [\Warkensoft\Laradmin\Fields\Input::class](field-types.md#input-field)
 - [\Warkensoft\Laradmin\Fields\Password::class](field-types.md#password-field)
 - [\Warkensoft\Laradmin\Fields\Textarea::class](field-types.md#textarea-field)
-- [\Warkensoft\Laradmin\Fields\SelectFromMany::class](field-types.md#select-from-many-related-field)
 - [\Warkensoft\Laradmin\Fields\ImageUpload::class](field-types.md#imageupload-field)
 - [\Warkensoft\Laradmin\Fields\Summernote::class](field-types.md#summernote-field)
+- [\Warkensoft\Laradmin\Fields\SelectFromMany::class](field-types.md#select-from-many-related-field)
+
 
 ## Input Field
 
-The input field is your most simple HTML input box, with a label, input box and placeholder. It supports all the 
-following parameters, most of which are also common to the other field types as well.
+	'type'        => \Warkensoft\Laradmin\Fields\Input::class,
+	'name'        => 'title',
+	'label'       => 'Sample Title',
+	'placeholder' => 'Some Fantastic Title',
+	'default'     => '',
+	'rules'       => 'required',
+	'searchable'  => true,
 
+The input field is your most simple HTML input box, with a label, input box and placeholder. It supports all the 
+parameters listed above, most of which are common to the other field types as well.
 
 #### `name`
 
@@ -38,9 +46,76 @@ https://laravel.com/docs/5.7/validation#available-validation-rules
 
 #### `searchable`
 
-Set to `false` to prevent Laradmin from searching the values in this field.
+Optional field. Set to `false` to prevent Laradmin from searching the values in this field.
 
-#### Additional Parameters
+
+## Password Field
+
+	'type'        => \Warkensoft\Laradmin\Fields\Password::class,
+	'name'        => 'password',
+	'label'       => 'Password',
+	'placeholder' => 'Enter password here...',
+	'rules'       => 'confirmed',
+	'searchable'  => false,
+	
+The password field is only slightly different from the input field and accepts almost all the same configuration 
+parameters. The important differences are:
+
+- It is a password field, so input is hidden.
+- There is no `value` or `default` displayed on the field. 
+
+
+## Textarea Field
+
+	'type'        => \Warkensoft\Laradmin\Fields\Textarea::class,
+	'name'        => 'body',
+	'label'       => 'Content',
+	'placeholder' => 'Write something amazing!',
+	'default'     => '',
+	'rules'       => '',
+	'rows'        => 10,
+
+The textarea field presents the user with a textarea box where they may type multiple paragraphs of text. In addition to 
+the regular input box fields, it supports a `rows` field. 
+
+#### `rows`
+
+Optionally define how many rows the textarea will display. Default: 6
+
+
+## ImageUpload Field
+
+	'type'        => \Warkensoft\Laradmin\Fields\ImageUpload::class,
+	'name'       => 'feature_image',
+	'label'       => 'Feature Image',
+	'placeholder' => '',
+	'default'     => '',
+	'rules'       => '',
+	'path'        => 'public',
+	'uri'         => '/storage',
+	
+The ImageUpload field presents the user with a file upload field which can be used to upload images related to the model.
+The field on the model should be a `string` since it will hold the URL to the file once uploaded. In addition to normal 
+input parameters, several other configuration parameters may be used.
+
+#### `path`
+
+Define the path relative to the storage/app folder where the images will be placed. In the example above, using 
+`public` as the path will result in the uploads being placed in /storage/app/public, assuming standard Laravel paths
+are being used.
+
+#### `uri`
+
+Define the relative path to the image when viewed on the website. In the sample parameters above, the images will be 
+uploaded to `/storage/app/public/something.jpg`, but when viewed on the website will be accessible at 
+`/storage/something.jpg`.
+
+**IMPORTANT!!** In order for this to work you must create a symlink from the public folder to your storage folder using the
+Laravel artisan command `php artisan storage:link`. This will create a symbolic link from `public/storage` to 
+`storage/app/public`
+
+
+## Additional Parameters
 
 Other fields can be declared in the array, and will be passed through for use in the view. For example, the `Textarea`
 field type also supports a `rows` parameter which is used (when given) to define how many rows are shown in the textarea.
