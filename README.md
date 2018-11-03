@@ -40,8 +40,8 @@ A step by step example of how to install the package on a new Laravel installati
 
 ## IMPORTANT SECURITY WARNING!
 
-Out of the box Laradmin is very insecure, requiring only a logged in user to access the 
-interface. Further security customization via middleware is **highly recommended**. 
+Out of the box Laradmin is very insecure, requiring only a logged in user to access the interface. Further security 
+customization via middleware is **highly recommended**. Read more about [securing Laradmin](#securing-laradmin). 
 
 
 ## Configuration Options
@@ -180,6 +180,19 @@ necessary changes.
 
 See the [Laradmin Field Types & Configuration](docs/field-types.md) for specific details on how to configure each of
 these types of fields.
+
+
+## Securing Laradmin
+
+Laradmin security is controlled via middleware defined in the laradmin.php configuration file. Out of the box, it only
+requires a logged in user by using the `auth` middleware. You may define additional middleware requirements by modifying
+the value of the `middleware` parameter in the config. For example, you may wish to create a new middleware file that
+requires logged in users to have an 'is_admin' parameter on there account, and only allow them access if it is set to
+`true`.
+
+Building middleware for Laravel is beyond the scope of this document, but may be researched further here in the Laravel 
+documentation.
+https://laravel.com/docs/5.7/middleware
 
 
 ## Project Objectives & Goals

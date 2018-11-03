@@ -64,15 +64,3 @@ haven't modified it, you should be able to see it at `http://yoursite.test/larad
 
 **WARNING** Right now, this makes your site VERY insecure, and more configuration should be made in order to prevent
 just any registered and logged in user from having full access to modify the site.
-
-## Securing Laradmin
-
-Laradmin security is controlled via middleware defined in the laradmin.php configuration file. Out of the box, it only
-requires a logged in user by using the `auth` middleware. You may define additional middleware requirements by modifying
-the value of the `middleware` parameter in the config. For example, you may wish to create a new middleware file that
-requires logged in users to have an 'is_admin' parameter on there account, and only allow them access if it is set to
-`true`.
-
-Building middleware for Laravel is beyond the scope of this document, but may be researched further here in the Laravel 
-documentation.
-https://laravel.com/docs/5.7/middleware
