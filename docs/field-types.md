@@ -83,7 +83,7 @@ the regular input box fields, it supports a `rows` field.
 Optionally define how many rows the textarea will display. Default: 6
 
 
-## Sumernote Field
+## Summernote Field
 
 	'type'        => \Warkensoft\Laradmin\Fields\Summernote::class,
 	'name'        => 'body',
