@@ -41,7 +41,12 @@ A step by step example of how to install the package on a new Laravel installati
 ## IMPORTANT SECURITY WARNING!
 
 Out of the box Laradmin is very insecure, requiring only a logged in user to access the interface. Further security 
-customization via middleware is **highly recommended**. Read more about [securing Laradmin](#securing-laradmin). 
+customization via middleware is **highly recommended**. Read more about [securing Laradmin](#securing-laradmin).
+
+
+## Sample Page Editing
+
+![Laradmin Page Editing Screenshot](https://s.warkior.com/laradmin-edit-page_21956B83.png "Laradmin Page Editing Screenshot")
 
 
 ## Configuration Options
