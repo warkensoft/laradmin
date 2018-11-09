@@ -17,3 +17,12 @@
         @endif
     </div>
 </div>
+
+@section('scripts')
+    @parent
+    <script>
+			$(function () {
+				$('#field-{{ $field->name }}').select2();
+			});
+    </script>
+@endsection
