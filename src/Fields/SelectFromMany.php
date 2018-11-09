@@ -14,6 +14,12 @@ class SelectFromMany extends BaseField
 
 	public function presentationValue($entry)
 	{
-		return $entry->{$this->parameters['relation']['method']}->{$this->parameters['relation']['label']};
+		if( $entry->{$this->parameters['relation']['method']} )
+		{
+			$ret = $entry->{$this->parameters['relation']['method']}->{$this->parameters['relation']['label']};
+			return $ret;
+		}
+		else
+			return '';
 	}
 }

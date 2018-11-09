@@ -36,8 +36,10 @@ abstract class BaseField implements FieldContract {
 		return $this->parameters;
 	}
 
-	public function value(\Illuminate\Foundation\Http\FormRequest $request)
+	public function value(\Illuminate\Foundation\Http\FormRequest $request=null)
 	{
+		if(empty($request))
+			$request = request();
 		return $request->get( $this->parameters['name'] );
 	}
 
@@ -49,6 +51,21 @@ abstract class BaseField implements FieldContract {
 	public function presentationValue($entry)
 	{
 		return $entry->{$this->parameters['name']};
+	}
+
+	public function handleAfterCreate($model)
+	{
+		return $model;
+	}
+
+	public function handleAfterUpdate($model)
+	{
+		return $model;
+	}
+
+	public function handleBeforeDelete($model)
+	{
+		return $model;
 	}
 
 }

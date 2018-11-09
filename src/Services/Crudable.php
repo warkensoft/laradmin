@@ -101,16 +101,28 @@ class Crudable
 	{
 		$values = $this->filterValues($values);
 		$this->modelInstance = $this->modelname::create($values);
+
+		$this->fields()->each(function (FieldContract $field) {
+			$field->handleAfterCreate($this->modelInstance);
+		});
 	}
 
 	public function update( $values = [] )
 	{
 		$values = $this->filterValues($values);
 		$this->modelInstance->update($values);
+
+		$this->fields()->each(function (FieldContract $field) {
+			$field->handleAfterUpdate($this->modelInstance);
+		});
 	}
 
 	public function delete()
 	{
+		$this->fields()->each(function (FieldContract $field) {
+			$field->handleBeforeDelete($this->modelInstance);
+		});
+
 		return $this->modelInstance->delete();
 	}
 
@@ -157,14 +169,27 @@ class Crudable
 
 	public function findValueFor( $fieldname )
 	{
-		if( ! is_null($this->modelInstance) )
-			return $this->modelInstance->$fieldname;
-
 		$field = collect($this->parameters->get('fields'))
 			->keyBy('name')
 			->get($fieldname);
 
-		return isset($field['value']) ? $field['value'] : $field['default'];
+		if( is_null($this->modelInstance) )
+		{
+			return isset($field['value']) ? $field['value'] : $field['default'];
+		}
+
+		if( empty($field['relation']['type']))
+			return $this->modelInstance->$fieldname;
+
+		if( $field['relation']['type'] == 'one-to-many' )
+			return $this->modelInstance->{$fieldname};
+
+		if( $field['relation']['type'] == 'many-to-many' )
+		{
+			return $this->modelInstance->{$field['relation']['method']}->pluck($field['relation']['key'])->all();
+		}
+
+		throw new \Exception('Unknown relationship type for field: ' . $fieldname);
 	}
 
 }

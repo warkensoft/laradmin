@@ -168,6 +168,7 @@ The `type` variable defines a Field class in the Laradmin interface. The followi
 - [\Warkensoft\Laradmin\Fields\ImageUpload::class](docs/field-types.md#imageupload-field)
 - [\Warkensoft\Laradmin\Fields\Summernote::class](docs/field-types.md#summernote-field)
 - [\Warkensoft\Laradmin\Fields\SelectFromMany::class](docs/field-types.md#selectfrommany-field)
+- [\Warkensoft\Laradmin\Fields\SelectManyFromMany::class](docs/field-types.md#selectmanyfrommany-field)
 
 You may define additional classes in your own application as needed, so long as they conform to the `FieldContract` 
 interface. In this way you can extend the Laradmin platform with any additional types of fields you might need.

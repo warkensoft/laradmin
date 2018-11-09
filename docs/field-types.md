@@ -8,6 +8,7 @@ The following field types are available to you for use in your configuration fil
 - [\Warkensoft\Laradmin\Fields\Summernote::class](field-types.md#summernote-field)
 - [\Warkensoft\Laradmin\Fields\ImageUpload::class](field-types.md#imageupload-field)
 - [\Warkensoft\Laradmin\Fields\SelectFromMany::class](field-types.md#selectfrommany-field)
+- [\Warkensoft\Laradmin\Fields\SelectManyFromMany::class](field-types.md#selectmanyfrommany-field)
 
 
 ## Input Field
@@ -163,7 +164,7 @@ in the database and a method like the following on the model:
 
 #### `type`
 
-Defines what type of relationship is used. Current types are:
+Defines what type of relationship is used. Type should be set to:
 
 - one-to-many
 
@@ -183,3 +184,36 @@ The primary key of the related model. This will corrospond to the field name on 
 
 The name of the field used in displaying the data from this relationship on indexes. For the example above, the `Pages`
 index will display the `$user->name` field in a column related to each page.
+
+
+## SelectManyFromMany Field
+
+	'type'        => \Warkensoft\Laradmin\Fields\SelectManyFromMany::class,
+	'name'       => 'tags',
+	'label'       => 'Tags',
+	'placeholder' => '',
+	'default'     => '',
+	'rules'       => '',
+	'relation'    => [
+		'type'   => 'many-to-many',
+		'model'  => \App\Tag::class,
+		'method' => 'tags',
+		'key'    => 'id',
+		'label'  => 'name',
+	]
+	
+This field presents the user with a multi-line select box allowing for the management of many-to-many relationships
+between models. The fields are essentially the same as `SelectFromMany`. The `[relation][method]` value should match
+the method name on the model that is used to define the Many to Many relationship. For the example above, you would
+need the following method in your model.
+
+	public function tags() {
+		return $this->belongsToMany(Tag::class);
+    }
+
+
+#### `type`
+
+Defines what type of relationship is used. Type should be set to:
+
+- many-to-many

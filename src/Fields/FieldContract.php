@@ -8,4 +8,7 @@ interface FieldContract
 	public function value(\Illuminate\Foundation\Http\FormRequest $request);
 	public function filterValue($value);
 	public function presentationValue($model);
+	public function handleAfterCreate($model);
+	public function handleAfterUpdate($model);
+	public function handleBeforeDelete($model);
 }
