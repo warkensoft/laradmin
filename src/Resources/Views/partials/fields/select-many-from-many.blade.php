@@ -7,7 +7,7 @@
             @foreach($field->related() as $relatedModel)
                 @if($relatedId = $relatedModel->{$field->relation['key']})
                 <option value="{{ $relatedId }}"
-                        {{ in_array($relatedId, $value) ? 'selected="selected"' : '' }}
+                        {{ in_array($relatedId, (isset($value) ? $value : [])) ? 'selected="selected"' : '' }}
                 >{{ $relatedModel->{$field->relation['label']} }}</option>
                 @endif
             @endforeach
