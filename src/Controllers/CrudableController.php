@@ -1,5 +1,6 @@
 <?php namespace Warkensoft\Laradmin\Controllers;
 
+use Illuminate\Database\QueryException;
 use Warkensoft\Laradmin\Requests\CrudableRequest;
 use App\Http\Controllers\Controller;
 
@@ -77,7 +78,14 @@ class CrudableController extends Controller
     {
 	    $crudable = $crudableRequest->crudable();
 	    $validatedData = $crudableRequest->validatedData();
-	    $crudable->create($validatedData);
+	    try
+	    {
+		    $crudable->create($validatedData);
+	    }
+	    catch(QueryException $exception)
+	    {
+		    return redirect()->back()->with('error', $exception->getMessage());
+	    }
 
 	    return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
 	                     ->with('success', 'Success');
@@ -108,7 +116,14 @@ class CrudableController extends Controller
 	    $crudable = $crudableRequest->crudable()
 	                                ->load($model_id);
 	    $validatedData = $crudableRequest->validatedData();
-	    $crudable->update($validatedData);
+	    try
+	    {
+		    $crudable->update($validatedData);
+	    }
+	    catch(QueryException $exception)
+	    {
+		    return redirect()->back()->with('error', $exception->getMessage());
+	    }
 
 	    return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
 	                     ->with('success', 'Success');
@@ -124,7 +139,14 @@ class CrudableController extends Controller
     {
 	    $crudable = $crudableRequest->crudable()
 	                                ->load($model_id);
-	    $crudable->delete();
+	    try
+	    {
+		    $crudable->delete();
+	    }
+	    catch(QueryException $exception)
+	    {
+	    	return redirect()->back()->with('error', $exception->getMessage());
+	    }
 
 	    return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
 	                     ->with('success', 'Success');
