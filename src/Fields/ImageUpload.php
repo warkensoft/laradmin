@@ -11,4 +11,12 @@ class ImageUpload extends BaseField
 	{
 		return "<img src='{$entry->{$this->parameters['name']}}' />";
 	}
+
+	public function filterValue($value)
+	{
+		if(empty($value))
+			return '';
+		else
+			return $value;
+	}
 }

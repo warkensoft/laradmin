@@ -13,11 +13,9 @@
                     Upload Image
                 </button>
             </div>
-            @if( !empty($value) )
-                <div class="col-md-12 pt-2">
+                <div class="col-md-12 pt-2 preview-image-{{ $field->name }} {{ empty($value) ? 'd-none' : '' }}">
                     <img class="img-thumbnail" id="image-{{ $field->name }}" src='{{ $value }}' style="max-height: 250px; max-width:100%;" />
                 </div>
-            @endif
         </div>
 
         @if ($errors->has($field->name))
@@ -60,6 +58,9 @@
             </div>
         </div>
     </div>
+
+
+
     <script>
       $('#temp-field-{{ $field->name }}').change(function () {
 				$('.output').html('');
@@ -69,12 +70,19 @@
         	var form =  $("#fileinfo{{ $field->name }}")[0];
             var fd = new FormData( form );
             var fieldname = $(this).data('fieldname');
+            var has_image = {{ !empty($value) ? 'true' : 'false' }}
             $.ajax({
                 url: '{{ route( config('laradmin.adminpath') . '.upload' ) }}',
                 type: 'POST',
                 data: fd,
                 success:function(data)
                 {
+                	if( ! has_image )
+                    {
+                        has_image = true;
+                        $('.preview-image-{{ $field->name }}').removeClass('d-none');
+                    }
+
                     $('#field-' + fieldname).val(data);
                     $('#image-' + fieldname).attr('src', data);
                     $('#uploadModal{{ $field->name }}').modal('hide');
