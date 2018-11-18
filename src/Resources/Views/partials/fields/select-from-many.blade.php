@@ -3,7 +3,7 @@
 
     <div class="col-md-9">
         <select name="{{ $field->name }}" id="field-{{ $field->name }}" class="form-control">
-            <option value="">Select...</option>
+            <option value="0">Select...</option>
             @foreach($field->related() as $relatedModel)
                 <option value="{{ $relatedModel->{$field->relation['key']} }}"
                         {{ (old($field->name) ?: (isset($value) ? $value : '')) == $relatedModel->{$field->relation['key']} ? 'selected="selected"' : '' }}

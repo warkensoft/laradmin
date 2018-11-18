@@ -22,4 +22,12 @@ class SelectFromMany extends BaseField
 		else
 			return '';
 	}
+
+	public function filterValue($value)
+	{
+		if(empty($value))
+			return null;
+		else
+			return $value;
+	}
 }
