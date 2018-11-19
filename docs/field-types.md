@@ -5,6 +5,8 @@ The following field types are available to you for use in your configuration fil
 - [\Warkensoft\Laradmin\Fields\Input::class](field-types.md#input-field)
 - [\Warkensoft\Laradmin\Fields\Password::class](field-types.md#password-field)
 - [\Warkensoft\Laradmin\Fields\Textarea::class](field-types.md#textarea-field)
+- [\Warkensoft\Laradmin\Fields\Select::class](field-types.md#select-field)
+- [\Warkensoft\Laradmin\Fields\Checkbox::class](field-types.md#checkbox-field)
 - [\Warkensoft\Laradmin\Fields\Summernote::class](field-types.md#summernote-field)
 - [\Warkensoft\Laradmin\Fields\ImageUpload::class](field-types.md#imageupload-field)
 - [\Warkensoft\Laradmin\Fields\SelectFromMany::class](field-types.md#selectfrommany-field)
@@ -82,6 +84,40 @@ the regular input box fields, it supports a `rows` field.
 #### `rows`
 
 Optionally define how many rows the textarea will display. Default: 6
+
+
+## Select Field
+
+	'type'        => \Warkensoft\Laradmin\Fields\Select::class,
+	'name'        => 'some_choice',
+	'label'       => 'Choice Title',
+	'default'     => '',
+	'rules'       => '',
+	'options'     => [
+		'a' => 'Item A',
+		'b' => 'Item B',
+		'c' => 'Item C',
+	],
+
+The select field presents the user with a select dropdown where they may choose a single item. In addition to 
+the regular input box fields, it supports an `options` field.
+
+#### `options`
+
+Define an array of key/value pairs to be used as the selection options. 
+
+
+## Checkbox Field
+
+	'type'        => \Warkensoft\Laradmin\Fields\Checkbox::class,
+	'name'        => 'published',
+	'label'       => 'Published',
+	'placeholder' => '',
+	'default'     => '1',           // Defines the default value assigned when the checkbox is saved.
+	'rules'       => 'boolean',
+
+The checkbox field presents a checkbox to the user. The label is shown to the right of the box. It's submitted
+value is defined by the `default` field.
 
 
 ## Summernote Field

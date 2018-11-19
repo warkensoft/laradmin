@@ -170,6 +170,8 @@ The `type` variable defines a Field class in the Laradmin interface. The followi
 - [\Warkensoft\Laradmin\Fields\Input::class](docs/field-types.md#input-field)
 - [\Warkensoft\Laradmin\Fields\Password::class](docs/field-types.md#password-field)
 - [\Warkensoft\Laradmin\Fields\Textarea::class](docs/field-types.md#textarea-field)
+- [\Warkensoft\Laradmin\Fields\Select::class](docs/field-types.md#select-field)
+- [\Warkensoft\Laradmin\Fields\Checkbox::class](docs/field-types.md#checkbox-field)
 - [\Warkensoft\Laradmin\Fields\ImageUpload::class](docs/field-types.md#imageupload-field)
 - [\Warkensoft\Laradmin\Fields\Summernote::class](docs/field-types.md#summernote-field)
 - [\Warkensoft\Laradmin\Fields\SelectFromMany::class](docs/field-types.md#selectfrommany-field)
