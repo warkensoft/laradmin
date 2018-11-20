@@ -22,7 +22,11 @@ class Provider extends ServiceProvider
 	    $this->publishes([
 		    __DIR__.'/Resources/Lang' => resource_path('lang/vendor/laradmin'),
 	    ], 'translations');
-	    
+
+	    $this->publishes([
+		    __DIR__.'/Resources/Assets' => public_path('vendor/laradmin'),
+	    ], 'public');
+
 	    $this->loadRoutesFrom(__DIR__.'/routes.php');
 	    $this->loadMigrationsFrom(__DIR__.'/Migrations');
 	    $this->loadTranslationsFrom(__DIR__.'/Resources/Lang', 'laradmin');

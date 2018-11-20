@@ -25,7 +25,7 @@ With composer, simply run the following on the commandline:
 
 ```
 $ composer require warkensoft/laradmin:1.*
-$ php artisan vendor:publish --provider="Warkensoft\Laradmin\Provider" --tag=config
+$ php artisan vendor:publish --provider="Warkensoft\Laradmin\Provider" --tag=config --tag=public
 ```
 
 This will install the package on your laravel application and publish a `laradmin.php` config file to your configuration 
