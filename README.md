@@ -29,7 +29,8 @@ $ php artisan vendor:publish --provider="Warkensoft\Laradmin\Provider" --tag=con
 ```
 
 This will install the package on your laravel application and publish a `laradmin.php` config file to your configuration 
-folder. You will use this file to configure how Laradmin will run on the application.
+folder. You will use this file to configure how Laradmin will run on the application. It will also publish several 
+jQuery plugins needed by Laradmin to a /public/vendor/laradmin/ folder. 
 
 All the views used by the interface can be overridden as needed. To publish all customizable assets, use
 ```
