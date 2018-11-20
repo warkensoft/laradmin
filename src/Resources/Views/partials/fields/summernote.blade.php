@@ -13,35 +13,37 @@
 @section('scripts')
     @parent
     <script>
-        $(document).ready(function() {
-            $('#field-{{ $field->name }}').summernote({
-                placeholder: '{{ !empty($field->placeholder) ? addslashes($field->placeholder) : '' }}',
-                height: 300,
-                callbacks: {
-                    onImageUpload: function(files)
-                    {
-                        var $editor = $(this);
-                        var data = new FormData();
-                        data.append('file', files[0]);
-                        data.append('_token', '{{ csrf_token() }}');
-                        $.ajax({
-                            url: "{{ route( config('laradmin.adminpath') . '.upload' ) }}",
-                            method: 'POST',
-                            data: data,
-                            processData: false,
-                            contentType: false,
-                            success: function(response) {
-                                $editor.summernote('insertImage', response);
-                            },
-                            error:function(data)
-                            {
-                                alert(data.responseJSON.errors.file[0]);
-                            },
-                        });
-                    },
-                    onImageUploadError: null
-                }
-            });
-        });
+			$(document).ready(function() {
+				if ($.fn.summernote) {
+					$('#field-{{ $field->name }}').summernote({
+						placeholder: '{{ !empty($field->placeholder) ? addslashes($field->placeholder) : '' }}',
+						height: 300,
+						callbacks: {
+							onImageUpload: function(files)
+							{
+								var $editor = $(this);
+								var data = new FormData();
+								data.append('file', files[0]);
+								data.append('_token', '{{ csrf_token() }}');
+								$.ajax({
+									url: "{{ route( config('laradmin.adminpath') . '.upload' ) }}",
+									method: 'POST',
+									data: data,
+									processData: false,
+									contentType: false,
+									success: function(response) {
+										$editor.summernote('insertImage', response);
+									},
+									error:function(data)
+									{
+										alert(data.responseJSON.errors.file[0]);
+									},
+								});
+							},
+							onImageUploadError: null
+						}
+					});
+				}
+			});
     </script>
 @endsection

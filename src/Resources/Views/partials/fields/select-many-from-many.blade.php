@@ -21,8 +21,10 @@
 @section('scripts')
     @parent
     <script>
-			$(function () {
-				$('#field-{{ $field->name }}').select2();
+			$(document).ready(function () {
+				if ($.fn.select2) {
+					$('#field-{{ $field->name }}').select2();
+				}
 			});
     </script>
 @endsection
