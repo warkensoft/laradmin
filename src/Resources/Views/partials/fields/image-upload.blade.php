@@ -14,7 +14,7 @@
                 </button>
             </div>
                 <div class="col-md-12 pt-2 preview-image-{{ $field->name }} {{ empty($value) ? 'd-none' : '' }}">
-                    <img class="img-thumbnail" id="image-{{ $field->name }}" src='{{ $value }}' style="max-height: 250px; max-width:100%;" />
+                    <img class="img-thumbnail" id="image-{{ $field->name }}" src='{{ empty($value) ? '' : $value }}' style="max-height: 250px; max-width:100%;" />
                 </div>
         </div>
 

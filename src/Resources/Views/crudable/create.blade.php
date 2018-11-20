@@ -1,7 +1,19 @@
 @extends( config('laradmin.layout') )
 
 @section('content')
-    <div class="card crudable shadow">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ route( config('laradmin.adminpath') . '.dashboard' ) }}">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.index') }}">{{ $crudable->nav_title }}</a>
+        </li>
+        <li class="breadcrumb-item active">Create {{ $crudable->singular }}</li>
+    </ol>
+
+    <div class="card mb-3 crudable">
         <div class="card-header navbar navbar-light bg-light">
             <a class="navbar-brand">Create New {{ $crudable->singular }}</a>
             <a href="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.index') }}" class="btn btn-sm btn-info float-right">Cancel</a>

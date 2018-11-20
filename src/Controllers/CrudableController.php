@@ -84,7 +84,7 @@ class CrudableController extends Controller
 	    }
 	    catch(QueryException $exception)
 	    {
-		    return redirect()->back()->with('error', $exception->getMessage());
+		    return redirect()->back()->withInput()->with('error', $exception->getMessage());
 	    }
 
 	    return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
@@ -122,7 +122,7 @@ class CrudableController extends Controller
 	    }
 	    catch(QueryException $exception)
 	    {
-		    return redirect()->back()->with('error', $exception->getMessage());
+		    return redirect()->back()->withInput()->with('error', $exception->getMessage());
 	    }
 
 	    return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')

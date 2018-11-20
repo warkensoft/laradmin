@@ -1,97 +1,106 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
+<html lang="en">
+
+  <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('head_title') {{ config('app.name', 'Laravel') }}</title>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/vendor/laradmin/Theme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/laradmin/Theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Page level plugin CSS-->
+    <link href="/vendor/laradmin/Theme/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/vendor/laradmin/Theme/css/sb-admin.css" rel="stylesheet">
 
     <link href="/vendor/laradmin/Select2/select2.min.css" rel="stylesheet" />
     <link href="/vendor/laradmin/Summernote/summernote-bs4.css" rel="stylesheet"/>
     <link href="/vendor/laradmin/DateTimePicker/jquery.datetimepicker.min.css" rel="stylesheet"/>
 
     @yield('head')
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel shadow">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route( config('laradmin.adminpath') . '.dashboard' ) }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+  </head>
 
-                    </ul>
+  <body id="page-top">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+    @include('laradmin::partials.header')
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+    <div id="wrapper">
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+      @include('laradmin::partials.sidebar')
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+        @include('laradmin::partials.notifications')
+        @yield('content')
+
+          {{--<!-- Breadcrumbs-->--}}
+          {{--<ol class="breadcrumb">--}}
+            {{--<li class="breadcrumb-item">--}}
+              {{--<a href="index.html">Dashboard</a>--}}
+            {{--</li>--}}
+            {{--<li class="breadcrumb-item active">Blank Page</li>--}}
+          {{--</ol>--}}
+
+          {{--<!-- Page Content -->--}}
+          {{--<h1>Blank Page</h1>--}}
+          {{--<hr>--}}
+          {{--<p>This is a great starting point for new custom pages.</p>--}}
+
+        </div>
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright © {{ config('app.name', 'Laravel') }} {{ date('Y') }}</span>
             </div>
-        </nav>
+          </div>
+        </footer>
 
-        <main class="py-4">
-            <div class="container">
-                <div class="row justify-content-center">
+      </div>
+      <!-- /.content-wrapper -->
 
-                    @if(Auth()->check())
-                        @include('laradmin::partials.navigation')
-                    @endif
-
-                    <div class="col-md-9">
-                        @include('laradmin::partials.notifications')
-                        @yield('content')
-                    </div>
-                </div>
-            </div>
-        </main>
     </div>
+    <!-- /#wrapper -->
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/laradmin/Theme/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/laradmin/Theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/laradmin/Theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script src="/vendor/laradmin/Theme/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="/vendor/laradmin/Theme/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/vendor/laradmin/Theme/js/sb-admin.min.js"></script>
+
     <script src="/vendor/laradmin/Select2/select2.min.js"></script>
     <script src="/vendor/laradmin/Summernote/summernote-bs4.js"></script>
     <script src="/vendor/laradmin/DateTimePicker/jquery.datetimepicker.full.min.js"></script>
+
     @yield('scripts')
-</body>
+
+  </body>
+
 </html>

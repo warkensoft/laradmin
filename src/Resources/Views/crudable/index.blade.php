@@ -1,9 +1,20 @@
 @extends( config('laradmin.layout') )
 
 @section('content')
-    <div class="card crudable shadow">
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ route( config('laradmin.adminpath') . '.dashboard' ) }}">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">{{ $crudable->nav_title }}</li>
+    </ol>
+
+
+    <div class="card mb-3 crudable">
         <div class="card-header navbar navbar-light bg-light">
-            <a class="navbar-brand">{{ $crudable->nav_title }} Index</a>
+
+            <a class="navbar-brand"><i class="fas {{ $crudable->nav_icon ?: 'fa-file-alt' }}"></i> {{ $crudable->nav_title }} Index</a>
 
             <form class="form-inline" method="GET" action="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.index') }}">
                 <input class="form-control form-control-sm" type="search" placeholder="Search"
@@ -15,12 +26,13 @@
 
         </div>
 
+        <div class="table-responsive">
         <table class="table table-hover">
             <tr>
                 @foreach($crudable->index as $field=>$label)
                     <th><a href="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.index', ['sort'=>$field, 'dir'=>(request()->get('dir') == 'asc' ? 'desc' : 'asc')]+request()->all()) }}">{{ $label }}</a></th>
                 @endforeach
-                <th style="text-align: right; width:125px;">Actions</th>
+                <th style="text-align: right; width:10rem;">Actions</th>
             </tr>
 
             @foreach($entries as $entry)
@@ -50,6 +62,7 @@
                 </tr>
             @endforeach
         </table>
+        </div>
 
         <div class="text-center">
             {{ $entries->render() }}
