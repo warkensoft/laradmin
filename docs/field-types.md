@@ -7,6 +7,7 @@ The following field types are available to you for use in your configuration fil
 - [\Warkensoft\Laradmin\Fields\Textarea::class](field-types.md#textarea-field)
 - [\Warkensoft\Laradmin\Fields\Select::class](field-types.md#select-field)
 - [\Warkensoft\Laradmin\Fields\Checkbox::class](field-types.md#checkbox-field)
+- [\Warkensoft\Laradmin\Fields\DateTime::class](field-types.md#datetime-field)
 - [\Warkensoft\Laradmin\Fields\Summernote::class](field-types.md#summernote-field)
 - [\Warkensoft\Laradmin\Fields\ImageUpload::class](field-types.md#imageupload-field)
 - [\Warkensoft\Laradmin\Fields\SelectFromMany::class](field-types.md#selectfrommany-field)
@@ -118,6 +119,26 @@ Define an array of key/value pairs to be used as the selection options.
 
 The checkbox field presents a checkbox to the user. The label is shown to the right of the box. It's submitted
 value is defined by the `default` field.
+
+
+## DateTime Field
+
+	'type'        => \Warkensoft\Laradmin\Fields\DateTime::class,
+	'name'        => 'published_at',
+	'label'       => 'Publish Date',
+	'placeholder' => '',
+	'default'     => '',
+	'rules'       => 'required',
+	'format'      => 'F j, Y',
+
+The datetime field displays a standard input box, however when clicked it presents the user with a date and time 
+picker box based on the [DateTimePicker jQuery plugin](https://xdsoft.net/jqplugins/datetimepicker/).
+
+This field type requires a DateTime field in your database.
+
+#### `format`
+
+Used to define the presentation format of the DateTime field when displayed on Laradmin index pages.
 
 
 ## Summernote Field
