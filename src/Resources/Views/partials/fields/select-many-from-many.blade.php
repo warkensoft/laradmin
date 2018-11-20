@@ -1,7 +1,7 @@
 <div class="form-group row">
-    <label for="field-{{ $field->name }}" class="col-md-3 col-form-label text-md-right">{{ $field->label }}</label>
+    <label for="field-{{ $field->name }}" class="col-md-2 col-form-label text-md-right">{{ $field->label }}</label>
 
-    <div class="col-md-9">
+    <div class="col-md-10">
         <select name="{{ $field->name }}[]" id="field-{{ $field->name }}" class="form-control" multiple="multiple">
             <option value="">Select...</option>
             @foreach($field->related() as $relatedModel)

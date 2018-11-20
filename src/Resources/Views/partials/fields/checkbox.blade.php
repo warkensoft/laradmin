@@ -1,5 +1,5 @@
 <div class="form-group row">
-    <div class="col-md-9 offset-md-3">
+    <div class="col-md-10 offset-md-2">
 
         <div class="form-check">
             <input type="hidden" name="{{ $field->name }}" value="0" />
