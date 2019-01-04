@@ -28,7 +28,7 @@
                 @method('PUT')
 
                 @foreach($crudable->fields() as $field)
-                    @include($field->view(), ['value'=>$crudable->findValueFor($field->name)])
+                    @include($field->view(), ['field'=>$field, 'value'=>$crudable->findValueFor($field->name)])
                 @endforeach
 
                 <div class="form-group row mb-0">

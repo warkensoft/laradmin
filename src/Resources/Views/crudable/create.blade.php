@@ -27,7 +27,7 @@
                 @csrf
 
                 @foreach($crudable->fields() as $key=>$field)
-                    @include($field->view(), compact('field'))
+                    @include($field->view(), ['field'=>$field, 'value'=>$crudable->findValueFor($field->name)])
                 @endforeach
 
                 <div class="form-group row mb-0">
