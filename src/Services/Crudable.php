@@ -175,7 +175,7 @@ class Crudable
 
 		if( is_null($this->modelInstance) )
 		{
-			return isset($field['value']) ? $field['value'] : (request()->has($fieldname) ? request()->get($fieldname) : $field['default']);
+			return isset($field['value']) ? $field['value'] : (request()->has($fieldname) ? request()->get($fieldname) : (isset($field['default']) ? $field['default'] : ''));
 		}
 
 		if( empty($field['relation']['type']))
