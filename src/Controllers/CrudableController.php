@@ -64,7 +64,10 @@ class CrudableController extends Controller
     public function create(CrudableRequest $crudableRequest)
     {
 	    $crudable = $crudableRequest->crudable();
-        return view('laradmin::crudable.create', compact('crudable'));
+	    return view()->first([
+		    'laradmin::' . $crudable->route . '.create',
+		    'laradmin::crudable.create'
+	    ], compact('crudable'));
     }
 
 	/**
@@ -101,7 +104,10 @@ class CrudableController extends Controller
     {
 	    $crudable = $crudableRequest->crudable()
 	                                ->load($model_id);
-	    return view('laradmin::crudable.edit', compact('crudable'));
+	    return view()->first([
+		    'laradmin::' . $crudable->route . '.edit',
+		    'laradmin::crudable.edit'
+	    ], compact('crudable'));
     }
 
     /**
