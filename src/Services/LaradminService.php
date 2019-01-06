@@ -10,7 +10,7 @@ class LaradminService
 		foreach( config('laradmin.crudable') as $model=>$config )
 		{
 			$route = $config['route'];
-			$controller = isset($config['controller']) ?: CrudableController::class;
+			$controller = isset($config['controller']) ? $config['controller'] : CrudableController::class;
 			Route::resource( $route, $controller, ['as' => config('laradmin.adminpath')] );
 		}
 	}
