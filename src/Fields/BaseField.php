@@ -19,7 +19,7 @@ abstract class BaseField implements FieldContract {
 
 	public function __get( $fieldname )
 	{
-		return $this->parameters[$fieldname];
+		return isset($this->parameters[$fieldname]) ? $this->parameters[$fieldname] : null;
 	}
 
 	public function __set( $fieldname, $value ) {

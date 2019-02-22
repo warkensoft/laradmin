@@ -32,6 +32,7 @@ class Crudable
 			    'default'     => '',
 			    'rows'        => 6,
 			    'rules'       => 'required',
+			    'help'       => '',
 			],
 		],
 		'index'      => [

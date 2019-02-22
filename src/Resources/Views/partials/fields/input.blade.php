@@ -3,8 +3,11 @@
 
     <div class="col-md-10">
         <input id="field-{{ $field->name }}" type="text" class="form-control{{ $errors->has($field->name) ? ' is-invalid' : '' }}"
-               name="{{ $field->name }}" placeholder="{{ !empty($field->placeholder) ? $field->placeholder : '' }}" {{ !empty($field->required) ? 'required' : '' }}
-               value="{{ old($field->name) ?: (isset($value) ? $value : '') }}" {{ !empty($field->disabled) ? 'disabled' : '' }}>
+               name="{{ $field->name }}" placeholder="{{ $field->placeholder ?: '' }}" {{ $field->required ? 'required' : '' }}
+               value="{{ old($field->name) ?: (isset($value) ? $value : '') }}" {{ $field->disabled ? 'disabled' : '' }}>
+        @if($field->help)
+            <div class="help-text" style="padding: 6px 12px; color:#555;">{{ $field->help }}</div>
+        @endif
         @if ($errors->has($field->name))
             <span class="invalid-feedback"><strong>{{ $errors->first($field->name) }}</strong></span>
         @endif
