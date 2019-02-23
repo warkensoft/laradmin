@@ -139,12 +139,14 @@ class Crudable
 			})->all();
 	}
 
-	public function fields()
+	public function fields($include=null)
 	{
 		return collect($this->parameters['fields'])
-			->map(function ($field) {
-				return $this->field( $field['name'], $field );
-			});
+			->map(function ($field) use ($include) {
+				if(is_null($include) OR in_array($field['name'], $include))
+					return $this->field( $field['name'], $field );
+			})
+			->filter();
 	}
 
 	/**
