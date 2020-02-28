@@ -24,7 +24,7 @@ break things, but please use it at your own risk.
 With composer, simply run the following on the commandline:
 
 ```
-$ composer require warkensoft/laradmin:1.*
+$ composer require warkensoft/laradmin:^1.0
 $ php artisan vendor:publish --provider="Warkensoft\Laradmin\Provider" --tag=config --tag=public
 ```
 
