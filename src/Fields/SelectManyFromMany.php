@@ -9,7 +9,7 @@ class SelectManyFromMany extends BaseField
 
 	public function related()
 	{
-		return $this->parameters['relation']['model']::all();
+		return $this->parameters['relation']['model']::orderBy( $this->parameters['relation']['label'] )->get();
 	}
 
 	public function presentationValue($entry)
