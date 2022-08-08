@@ -26,9 +26,13 @@ This will pull the Laradmin interface as a package into your new Laravel install
 This will publish a sample laradmin.php file to your /config/ folder in the new site. You will use this file to 
 configure Laradmin for your website's needs.
 
-### `$ php artisan make:auth`
+### `$ php artisan breeze:install`
 
 This creates Laravel's built-in user authentication scaffolding in order to allow users to register and log in.
+
+### `$ npm install && npm run dev`
+
+This npm commands create build assets
 
 ## Create a new MySQL database
 
