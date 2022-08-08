@@ -1,4 +1,5 @@
 {
+  "version": "2.0.0",
   "name": "warkensoft/laradmin",
   "description": "A simple, powerful, drop-in administrative interface for Laravel.",
   "minimum-stability": "stable",
@@ -17,6 +18,8 @@
   "require-dev": {
   },
   "require": {
+	"php": "^7.3|^8.0",
+	"laravel/breeze": "1.*"
   },
   "extra": {
 	"laravel": {
