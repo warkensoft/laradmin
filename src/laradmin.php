@@ -26,12 +26,13 @@ return [
 	'crudable'     => [
 
 //		// Sample entry for a standard laravel user record.
-//		'\\App\\User' => [
+//		'\\App\\Models\\User' => [
 //			'path'      => 'users', // The path to the model under /laradmin/
 //			'route'     => 'users', // The route name used for the model
 //			'nav_title' => 'Users', // The title used in the navigation sidebar
 //			'plural'    => 'Users', // The plural form of the model
 //			'singular'  => 'User',  // The singular form of the model
+//			'nav-icon'  => 'fa-user',  // The singular form of the model
 //
 //			// Fields used for model data
 //			'fields'    => [
