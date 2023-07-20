@@ -11,22 +11,7 @@
 
     <title>@yield('head_title') {{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Bootstrap core CSS-->
-    <link href="/vendor/laradmin/Theme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template-->
-    <link href="/vendor/laradmin/Theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Page level plugin CSS-->
-    <link href="/vendor/laradmin/Theme/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="/vendor/laradmin/Theme/css/sb-admin.css" rel="stylesheet">
-
-    <link href="/vendor/laradmin/Select2/select2.min.css" rel="stylesheet" />
-    <link href="/vendor/laradmin/Summernote/summernote-bs4.css" rel="stylesheet"/>
-    <link href="/vendor/laradmin/DateTimePicker/jquery.datetimepicker.min.css" rel="stylesheet"/>
-
+    <link href="/vendor/laradmin/Theme/styles.css" rel="stylesheet">
     @yield('head')
 
   </head>
@@ -82,23 +67,7 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="/vendor/laradmin/Theme/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/laradmin/Theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="/vendor/laradmin/Theme/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <script src="/vendor/laradmin/Theme/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="/vendor/laradmin/Theme/vendor/datatables/dataTables.bootstrap4.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="/vendor/laradmin/Theme/js/sb-admin.min.js"></script>
-
-    <script src="/vendor/laradmin/Select2/select2.min.js"></script>
-    <script src="/vendor/laradmin/Summernote/summernote-bs4.js"></script>
-    <script src="/vendor/laradmin/DateTimePicker/jquery.datetimepicker.full.min.js"></script>
-
+    <script src="/vendor/laradmin/Theme/scripts.js"></script>
     @yield('scripts')
 
   </body>

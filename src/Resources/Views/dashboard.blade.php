@@ -2,6 +2,12 @@
 
 @section('content')
 
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -40,27 +46,7 @@
 
           </div>
 
-          <div class="card mb-3">
-            <div class="card-header">Dashboard</div>
-
-            <div class="card-body">
-              @if (session('status'))
-                <div class="alert alert-success">
-                  {{ session('status') }}
-                </div>
-              @endif
-
-              You are logged in!
-            </div>
-          </div>
-
 @endsection
 
 @section('scripts')
-    <!-- Page level plugin JavaScript-->
-    <script src="/vendor/laradmin/Theme/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Demo scripts for this page-->
-    <script src="/vendor/laradmin/Theme/js/demo/datatables-demo.js"></script>
-    <script src="/vendor/laradmin/Theme/js/demo/chart-area-demo.js"></script>
 @endsection
