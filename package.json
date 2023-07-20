@@ -3,6 +3,7 @@
     "type": "module",
     "scripts": {
         "watch": "parcel watch --no-source-maps --no-hmr",
+        "dev": "parcel build --no-source-maps --no-optimize",
         "build": "parcel build --no-source-maps"
     },
     "source": [
@@ -22,6 +23,6 @@
         "jquery-easing": "^0.0.1",
         "parcel": "^2.9.3",
         "select2": "^4.1.0-rc.0",
-        "summernote": "^0.8.20"
+        "summernote": "0.8.16"
     }
 }

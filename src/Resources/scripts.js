@@ -1,13 +1,16 @@
 import jQuery from 'jquery'
-window.$ = jQuery;
+window.$ = window.jQuery = jQuery;
 
 import bootstrap from 'bootstrap'
 window.bootstrap = bootstrap;
 
 require('jquery-easing');
 require('jquery-datetimepicker');
-require('select2');
-require('summernote');
+
+import 'summernote'
+
+import select2 from 'select2';
+select2();
 
 (function($) {
     "use strict"; // Start of use strict
