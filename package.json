@@ -1,0 +1,20 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "watch": "parcel watch --no-source-maps --no-hmr",
+        "build": "parcel build --no-source-maps"
+    },
+    "source": ["src/Resources/scripts.js", "src/Resources/styles.css"],
+    "targets": {
+        "default": {
+            "distDir": "src/Resources/Assets/Theme"
+        }
+    },
+    "devDependencies": {
+        "alpinejs": "^3.4.2",
+        "parcel": "^2.9.3",
+        "postcss": "^8.4.26",
+        "tailwindcss": "^3.3.3"
+    }
+}
