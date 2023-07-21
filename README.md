@@ -203,7 +203,7 @@ requires logged in users to have an 'is_admin' parameter on there account, and o
 
 Building middleware for Laravel is beyond the scope of this document, but may be researched further here in the Laravel 
 documentation.
-https://laravel.com/docs/5.7/middleware
+https://laravel.com/docs/10.x/middleware
 
 
 ## Project Objectives & Goals

@@ -17,7 +17,7 @@ Install a new Laravel site using your preferred method. I enjoy using the `larav
 
 Use the commandline to change directory into your new site's root folder.
 
-### `$ composer require warkensoft/laradmin:1.*`
+### `$ composer require warkensoft/laradmin:2.*`
 
 This will pull the Laradmin interface as a package into your new Laravel installation.
 
@@ -26,9 +26,18 @@ This will pull the Laradmin interface as a package into your new Laravel install
 This will publish a sample laradmin.php file to your /config/ folder in the new site. You will use this file to 
 configure Laradmin for your website's needs.
 
-### `$ php artisan make:auth`
+## User Authentication
 
-This creates Laravel's built-in user authentication scaffolding in order to allow users to register and log in.
+Any user authentication system that provides middleware-based route security can work. The following instructions use 
+Laravel's Breeze package for simple user authentication.
+
+### `$ composer require laravel/breeze --dev`
+### `$ php artisan breeze:install blade`
+
+This creates Laravel's Breeze user authentication scaffolding in order to allow users to register and log in.
+
+Learn more about installing Laravel Breeze here:
+https://laravel.com/docs/10.x/starter-kits#laravel-breeze
 
 ## Create a new MySQL database
 
