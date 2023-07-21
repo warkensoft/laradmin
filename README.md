@@ -96,6 +96,7 @@ in order to edit the records. See Field Configuration for more details on the fi
 			'nav_title' => 'Users', // The title used in the navigation sidebar
 			'plural'    => 'Users', // The plural form of the model
 			'singular'  => 'User',  // The singular form of the model
+			'nav_icon'  => 'fa-users',  // The font-awesome icon for admin nav elements
 
 			// Fields used for model data
 			'fields'    => [
