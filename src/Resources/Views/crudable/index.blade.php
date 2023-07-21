@@ -65,7 +65,7 @@
         </div>
 
         <div class="text-center">
-            {{ $entries->render() }}
+            {{ $entries->links('laradmin::partials.bootstrap-4-pagination') }}
         </div>
 
     </div>
