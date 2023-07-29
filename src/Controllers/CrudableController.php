@@ -20,23 +20,28 @@ class CrudableController extends Controller
     	/** @var \Illuminate\Database\Eloquent\Builder $query */
     	$query = $crudable->modelname()::query();
 
-	    if($filtered = $crudableRequest->get('filtered'))
-	    {
-	    	list($key, $value) = explode(',', $filtered, 2);
-	    	$key = preg_replace('#[^a-z0-9_-]#is', '', trim($key));
-	    	$value = trim($value);
-	    	$query=$query->where( $key, $value );
-	    }
-
 	    if($search = $crudableRequest->get('search'))
 	    {
 	    	$query = $query->where(function ($q) use ($crudable, $search) {
 	    		$fields = collect($crudable->fields)->filter(function ($field) {
 	    			return !isset($field['searchable']) OR $field['searchable'] !== false;
 			    });
-	    		$q = $q->where($fields->shift()['name'], 'LIKE', '%' . $search . '%');
+
+			    $field = $fields->shift();
+			    if( isset($field['search']) && is_callable($field['search']))
+				    $q->where(function ($q2) use ($field, $search) {
+						call_user_func($field['search'], $q2, $search);
+				    });
+			    else
+				    $q->where($field['name'], 'LIKE', '%' . $search . '%');
+
 			    $fields->each(function ($field) use ($q, $search) {
-					$q->orWhere($field['name'], 'LIKE', '%' . $search . '%');
+					if( isset($field['search']) && is_callable($field['search']))
+						$q->orWhere(function ($q2) use ($field, $search) {
+							call_user_func($field['search'], $q2, $search);
+						});
+					else
+						$q->orWhere($field['name'], 'LIKE', '%' . $search . '%');
 			    });
 		    });
 	    }
