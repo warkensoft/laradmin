@@ -26,6 +26,7 @@ The following field types are available to you for use in your configuration fil
 	'searchable'  => true,
 	'display'     => function ($value) { ... return $value; },
 	'search'      => function ($query, $search) { ... return $query; },
+	'sort'        => function ($query, $direction) { ... return $query; },
 
 The input field is your most simple HTML input box, with a label, input box and placeholder. It supports all the 
 parameters listed above, most of which are common to the other field types as well.
@@ -62,6 +63,10 @@ Optional field. Accepts a callable to format the display of the field value in L
 #### `search`
 
 Optional field. Accepts a callable to modify the search query for a field value in Laradmin indexes.
+
+#### `sort`
+
+Optional field. Accepts a callable to modify the query sorting for a field in Laradmin indexes.
 
 
 ## Password Field

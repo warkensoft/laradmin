@@ -16,9 +16,10 @@ class CrudableController extends Controller
     public function index(CrudableRequest $crudableRequest)
     {
     	$crudable = $crudableRequest->crudable();
+		$tablename = (new ($crudable->modelname()))->getTable();
 
     	/** @var \Illuminate\Database\Eloquent\Builder $query */
-    	$query = $crudable->modelname()::query();
+    	$query = $crudable->modelname()::select($tablename . ".*");
 
 	    if($search = $crudableRequest->get('search'))
 	    {
@@ -48,8 +49,12 @@ class CrudableController extends Controller
 
 	    $sortKey = $crudableRequest->has('sort') ? $crudableRequest->get('sort') : $crudable->sort['key'];
 	    $sortDir = $crudableRequest->has('dir') ? $crudableRequest->get('dir') : $crudable->sort['dir'];
+	    $sortField = collect($crudable->fields)->where('name', $sortKey)->first();
 
-	    $query->orderBy($sortKey, $sortDir);
+	    if( isset($sortField['sort']) && is_callable($sortField['sort']))
+			call_user_func($sortField['sort'], $query, $sortDir);
+		else
+	        $query->orderBy($sortKey, $sortDir);
 
     	$entries = $query->paginate( config('laradmin.index-length') )->appends($crudableRequest->all());
 
