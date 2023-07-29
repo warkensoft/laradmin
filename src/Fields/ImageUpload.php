@@ -9,7 +9,12 @@ class ImageUpload extends BaseField
 
 	public function presentationValue($entry)
 	{
-		return "<img src='{$entry->{$this->parameters['name']}}' />";
+        if( isset($this->parameters['display']) && is_callable($this->parameters['display']) ) {
+            return call_user_func($this->parameters['display'], $entry->{$this->parameters['name']});
+        }
+        else {
+            return "<img src='{$entry->{$this->parameters['name']}}' />";
+        }
 	}
 
 	public function filterValue($value)

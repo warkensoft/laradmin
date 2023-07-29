@@ -9,6 +9,11 @@ class Checkbox extends BaseField
 
 	public function presentationValue($entry)
 	{
-		return $entry->{$this->parameters['name']} ? 'true' : '';
+        if( isset($this->parameters['display']) && is_callable($this->parameters['display']) ) {
+            return call_user_func($this->parameters['display'], $entry->{$this->parameters['name']});
+        }
+        else {
+            return $entry->{$this->parameters['name']} ? 'true' : '';
+        }
 	}
 }

@@ -24,6 +24,7 @@ The following field types are available to you for use in your configuration fil
 	'default'     => '',
 	'rules'       => 'required',
 	'searchable'  => true,
+	'display'     => function ($value) { ... return $value; },
 
 The input field is your most simple HTML input box, with a label, input box and placeholder. It supports all the 
 parameters listed above, most of which are common to the other field types as well.
@@ -52,6 +53,10 @@ https://laravel.com/docs/5.7/validation#available-validation-rules
 #### `searchable`
 
 Optional field. Set to `false` to prevent Laradmin from searching the values in this field.
+
+#### `display`
+
+Optional field. Accepts a callable to format the display of the field value in Laradmin indexes.
 
 
 ## Password Field
@@ -282,7 +287,7 @@ Defines what type of relationship is used. Type should be set to:
     'type'        => \Warkensoft\Laradmin\Fields\System::class,
     'name'        => 'created_at',
     'display' => function ($value) {
-        return 'BBB ' . $value->format('Y-m-d');
+        return $value->format('Y-m-d');
     },
 
 The system field can be used for fields that might have customizations but aren't editable on the forms. System fields

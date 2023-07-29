@@ -14,7 +14,10 @@ class SelectManyFromMany extends BaseField
 
 	public function presentationValue($entry)
 	{
-		if( $entry->{$this->parameters['relation']['method']}->count() )
+        if( isset($this->parameters['display']) && is_callable($this->parameters['display']) ) {
+            return call_user_func($this->parameters['display'], $entry->{$this->parameters['name']});
+        }
+        elseif( $entry->{$this->parameters['relation']['method']}->count() )
 		{
 			$ret = $entry->{$this->parameters['relation']['method']}->pluck($this->parameters['relation']['label'])->implode(', ');
 			return substr($ret, 0, 15) . (strlen($ret) > 15 ? '...' : '');
