@@ -1,5 +1,7 @@
 <?php namespace Warkensoft\Laradmin\Fields;
 
+use Illuminate\Support\Str;
+
 abstract class BaseField implements FieldContract {
 
 	protected $parameters = [];
@@ -50,7 +52,12 @@ abstract class BaseField implements FieldContract {
 
 	public function presentationValue($entry)
 	{
-		return $entry->{$this->parameters['name']};
+		if( isset($this->parameters['display']) && is_callable($this->parameters['display']) ) {
+			return call_user_func($this->parameters['display'], $entry->{$this->parameters['name']});
+		}
+		else {
+			return $entry->{$this->parameters['name']};
+		}
 	}
 
 	public function handleAfterCreate($model)

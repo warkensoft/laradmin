@@ -143,6 +143,11 @@ class Crudable
 	{
 		return collect($this->parameters['fields'])
 			->map(function ($field) use ($include) {
+
+				// System fields are only used to store or manipulate data and are not parsed in form create/save results.
+				if( $field['type'] == \Warkensoft\Laradmin\Fields\System::class )
+					return;
+
 				if(is_null($include) OR in_array($field['name'], $include))
 					return $this->field( $field['name'], $field );
 			})

@@ -12,6 +12,7 @@ The following field types are available to you for use in your configuration fil
 - [\Warkensoft\Laradmin\Fields\ImageUpload::class](field-types.md#imageupload-field)
 - [\Warkensoft\Laradmin\Fields\SelectFromMany::class](field-types.md#selectfrommany-field)
 - [\Warkensoft\Laradmin\Fields\SelectManyFromMany::class](field-types.md#selectmanyfrommany-field)
+- [\Warkensoft\Laradmin\Fields\System::class](field-types.md#system-field)
 
 
 ## Input Field
@@ -274,3 +275,16 @@ need the following method in your model.
 Defines what type of relationship is used. Type should be set to:
 
 - many-to-many
+
+
+## System Field
+
+    'type'        => \Warkensoft\Laradmin\Fields\System::class,
+    'name'        => 'created_at',
+    'display' => function ($value) {
+        return 'BBB ' . $value->format('Y-m-d');
+    },
+
+The system field can be used for fields that might have customizations but aren't editable on the forms. System fields
+are not displayed on the create or edit form, but can be used on indexes, specifically to display or filter automatic
+fields such as `created_at` or `updated_at`.
