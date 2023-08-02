@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8">
                 <input id="field-{{ $field->name }}" type="text" class="form-control{{ $errors->has($field->name) ? ' is-invalid' : '' }}"
-                       name="{{ $field->name }}" placeholder="{{ !empty($field->placeholder) ? $field->placeholder : '' }}" {{ !empty($field->required) ? 'required' : '' }}
+                       name="{{ $field->name }}" placeholder="{{ $field->placeholder ?: '' }}" {{ !empty($field->required) ? 'required' : '' }}
                        value="{{ old($field->name) ?: (isset($value) ? $value : '') }}" {{ !empty($field->disabled) ? 'disabled' : '' }}>
             </div>
             <div class="col-md-4 text-right">
@@ -48,7 +48,7 @@
                         <input id="temp-field-{{ $field->name }}"
                                name="file" type="file"
                                class="form-control-file {{ $errors->has($field->name) ? ' is-invalid' : '' }}"
-                               placeholder="{{ !empty($field->placeholder) ? $field->placeholder : '' }}"
+                               placeholder="{{ $field->placeholder ?: '' }}"
                                {{ !empty($field->required) ? 'required' : '' }}
                                {{ !empty($field->disabled) ? 'disabled' : '' }} />
                     </form>

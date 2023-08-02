@@ -3,7 +3,7 @@
 
     <div class="col-md-10">
         <input id="field-{{ $field->name }}" type="password" class="form-control{{ $errors->has($field->name) ? ' is-invalid' : '' }}"
-               name="{{ $field->name }}" placeholder="{{ !empty($field->placeholder) ? $field->placeholder : '' }}" {{ !empty($field->required) ? 'required' : '' }}
+               name="{{ $field->name }}" placeholder="{{ $field->placeholder ?: '' }}" {{ !empty($field->required) ? 'required' : '' }}
                value="" {{ !empty($field->disabled) ? 'disabled' : '' }}>
         @if($field->help)
             <div class="help-text" style="padding: 6px 12px; color:#555;">{{ $field->help }}</div>

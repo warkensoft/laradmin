@@ -3,7 +3,7 @@
 
     <div class="col-md-10">
         <textarea id="field-{{ $field->name }}" type="text" class="form-control summernote {{ $errors->has($field->name) ? 'is-invalid' : '' }} {{ !empty($field->class) ? $field->class : '' }}"
-               name="{{ $field->name }}" placeholder="{{ !empty($field->placeholder) ? $field->placeholder : '' }}" {{ !empty($field->required) ? 'required' : '' }}
+               name="{{ $field->name }}" placeholder="{{ $field->placeholder ?: '' }}" {{ !empty($field->required) ? 'required' : '' }}
                 {{ !empty($field->disabled) ? 'disabled' : '' }} rows="{{ !empty($rows) ? $rows : 6 }}">{{ old($field->name) ?: (isset($value) ? $value : '') }}</textarea>
 		@if($field->help)
 			<div class="help-text" style="padding: 6px 12px; color:#555;">{{ $field->help }}</div>
@@ -19,7 +19,7 @@
 			$(document).ready(function() {
 				if ($.fn.summernote) {
 					$('#field-{{ $field->name }}').summernote({
-						placeholder: '{{ !empty($field->placeholder) ? addslashes($field->placeholder) : '' }}',
+						placeholder: '{{ $field->placeholder ? addslashes($field->placeholder) : '' }}',
 						height: 300,
 						callbacks: {
 							onImageUpload: function(files)
