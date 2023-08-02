@@ -12,6 +12,9 @@
                 {{ $field->label }}
             </label>
         </div>
+        @if($field->help)
+            <div class="help-text" style="padding: 6px 12px; color:#555;">{{ $field->help }}</div>
+        @endif
 
     </div>
 </div>

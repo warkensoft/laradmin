@@ -17,6 +17,9 @@
                     <img class="img-thumbnail" id="image-{{ $field->name }}" src='{{ empty($value) ? '' : $value }}' style="max-height: 250px; max-width:100%;" />
                 </div>
         </div>
+        @if($field->help)
+            <div class="help-text" style="padding: 6px 12px; color:#555;">{{ $field->help }}</div>
+        @endif
 
         @if ($errors->has($field->name))
             <span class="invalid-feedback"><strong>{{ $errors->first($field->name) }}</strong></span>

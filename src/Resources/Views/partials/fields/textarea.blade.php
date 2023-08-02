@@ -5,6 +5,9 @@
         <textarea id="field-{{ $field->name }}" type="text" class="form-control {{ $errors->has($field->name) ? 'is-invalid' : '' }} {{ !empty($field->class) ? $field->class : '' }}"
                name="{{ $field->name }}" placeholder="{{ !empty($field->placeholder) ? $field->placeholder : '' }}" {{ !empty($field->required) ? 'required' : '' }}
                 {{ !empty($field->disabled) ? 'disabled' : '' }} rows="{{ !empty($rows) ? $rows : 6 }}">{{ old($field->name) ?: (isset($value) ? $value : '') }}</textarea>
+        @if($field->help)
+            <div class="help-text" style="padding: 6px 12px; color:#555;">{{ $field->help }}</div>
+        @endif
         @if ($errors->has($field->name))
             <span class="invalid-feedback"><strong>{{ $errors->first($field->name) }}</strong></span>
         @endif

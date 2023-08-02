@@ -10,6 +10,9 @@
                 >{{ $relatedModel->{$field->relation['label']} }}</option>
             @endforeach
         </select>
+        @if($field->help)
+            <div class="help-text" style="padding: 6px 12px; color:#555;">{{ $field->help }}</div>
+        @endif
         @if ($errors->has($field->name))
             <span class="invalid-feedback"><strong>{{ $errors->first($field->name) }}</strong></span>
         @endif
