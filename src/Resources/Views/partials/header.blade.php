@@ -1,31 +1,15 @@
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <nav class="flex pl-4 pr-8 py-4 bg-gray-700 sticky top-0 justify-between gap-4">
 
-      <a class="navbar-brand mr-1" href="{{ route( config('laradmin.adminpath') . '.dashboard' ) }}">{{ config('app.name', 'Laravel') }}</a>
+      <a class="text-white text-xl mr-1" href="{{ route( config('laradmin.adminpath') . '.dashboard' ) }}"><i class="fa-solid fa-screwdriver-wrench"></i> {{ config('app.name', 'Laravel') }}</a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Navbar -->
-      <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
-
-        <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user-circle fa-fw"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-              {{ __('Logout') }}
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
+        <div class="flex gap-6 text-gray-300">
+            <a href="/" class="hover:text-white" target="_blank"><em class="fa fa-home"></em> View Site</a>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="cursor-pointer hover:text-white"
+                        type="submit"><em class="fa fa-right-from-bracket"></em> Logout</button>
             </form>
-          </div>
-        </li>
-      </ul>
+        </div>
 
     </nav>
