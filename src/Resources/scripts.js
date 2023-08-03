@@ -1,8 +1,8 @@
 import jQuery from 'jquery'
 window.$ = window.jQuery = jQuery;
 
-import bootstrap from 'bootstrap'
-window.bootstrap = bootstrap;
+// import bootstrap from 'bootstrap'
+// window.bootstrap = bootstrap;
 
 require('jquery-easing');
 require('jquery-datetimepicker');

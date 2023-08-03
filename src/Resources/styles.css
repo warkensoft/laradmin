@@ -1,8 +1,19 @@
 @import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
-@import "../../node_modules/bootstrap/dist/css/bootstrap.css";
+/*@import "../../node_modules/bootstrap/dist/css/bootstrap.css";*/
 @import "../../node_modules/jquery-datetimepicker/build/jquery.datetimepicker.min.css";
 @import "../../node_modules/select2/dist/css/select2.css";
-@import "../../node_modules/summernote/dist/summernote-bs4.css";
+@import "../../node_modules/summernote/dist/summernote.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	.navbar {
+		@apply bg-gray-700;
+	}
+
+}
 
 /*!
  * Start Bootstrap - SB Admin v5.0.2 (https://startbootstrap.com/template-overviews/sb-admin)
