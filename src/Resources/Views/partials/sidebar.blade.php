@@ -1,19 +1,12 @@
-
-      <!-- Sidebar -->
-      <ul class="sidebar navbar-nav">
-        <li class="nav-item {{ request()->routeIs(config('laradmin.adminpath') . '.dashboard') ? 'active' : '' }}">
-          <a class="nav-link"
-             href="{{ route(config('laradmin.adminpath') . '.dashboard') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
-
-        @foreach(config('laradmin.crudable') as $model => $parameters)
-        <li class="nav-item {{ Laradmin::IsCurrentRoute($parameters['route']) ? 'active' : '' }}">
-          <a class="nav-link" href="{{ route(config('laradmin.adminpath') . '.' . $parameters['route'] . '.index') }}">
+<div class="flex flex-col w-1/6 bg-gray-800 p-4 text-gray-400 text-lg gap-6">
+    <a href="{{ route(config('laradmin.adminpath') . '.dashboard') }}"
+       class="hover:text-white {{ request()->routeIs(config('laradmin.adminpath') . '.dashboard') ? 'text-white' : '' }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>
+    @foreach(config('laradmin.crudable') as $model => $parameters)
+        <a href="{{ route(config('laradmin.adminpath') . '.' . $parameters['route'] . '.index') }}"
+           class="hover:text-white {{ Laradmin::IsCurrentRoute($parameters['route']) ? 'text-white' : '' }}">
             <i class="fas fa-fw {{ !empty($parameters['nav_icon']) ? $parameters['nav_icon'] : 'fa-file-alt' }}"></i>
-            <span>{{ $parameters['nav_title'] }}</span></a>
-        </li>
-        @endforeach
-      </ul>
+            {{ $parameters['nav_title'] }}
+        </a>
+    @endforeach
+</div>
