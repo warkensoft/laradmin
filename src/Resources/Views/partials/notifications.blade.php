@@ -32,7 +32,7 @@
     @endif
 
     @if ($message = Session::get('info'))
-        <x-laradmin::notification class="text-blue-800 bg-blue-100">
+        <x-laradmin::notification class="text-cyan-800 bg-cyan-100">
             {!! nl2br($message) !!}
         </x-laradmin::notification>
     @endif

@@ -14,7 +14,7 @@
     <div class="card mb-3 crudable">
         <div class="card-header navbar navbar-light bg-light">
 
-            <a class="navbar-brand"><i class="fas {{ $crudable->nav_icon ?: 'fa-file-alt' }}"></i> {{ $crudable->nav_title }} Index</a>
+            <div class="navbar-brand"><i class="fas {{ $crudable->nav_icon ?: 'fa-file-alt' }}"></i> {{ $crudable->nav_title }} Index</div>
 
             <form class="form-inline" method="GET" action="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.index') }}">
                 <input class="form-control form-control-sm" type="search" placeholder="Search"
@@ -64,8 +64,8 @@
         </table>
         </div>
 
-        <div class="text-center">
-            {{ $entries->links('laradmin::partials.bootstrap-4-pagination') }}
+        <div class="text-center p-2">
+            {{ $entries->links('laradmin::partials.tailwind-pagination') }}
         </div>
 
     </div>

@@ -15,7 +15,7 @@
 
     <div class="card mb-3 crudable">
         <div class="card-header navbar navbar-light bg-light">
-            <a class="navbar-brand">Edit {{ $crudable->singular }}</a>
+            <div class="navbar-brand">Edit {{ $crudable->singular }}</div>
             <a href="{{ route(config('laradmin.adminpath') . '.' . $crudable->route . '.index') }}" class="btn btn-sm btn-info float-right">Cancel</a>
         </div>
 
@@ -31,8 +31,9 @@
                     @include($field->view(), ['field'=>$field, 'value'=>$crudable->findValueFor($field->name)])
                 @endforeach
 
-                <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-2">
+                <div class="form-group row mb-0 flex gap-8">
+                    <label class="col-md-2">&nbsp;</label>
+                    <div class="col-md-10">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Save ' . $crudable->singular) }}
                         </button>

@@ -24,9 +24,9 @@
 
       @include('laradmin::partials.sidebar')
 
-      <div class="grow relative">
+      <div class="page-content grow relative">
 
-        <div class="p-4">
+        <div class="p-4 mb-12">
 
         @include('laradmin::partials.notifications')
         @yield('content')

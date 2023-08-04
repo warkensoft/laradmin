@@ -2,20 +2,18 @@
     <label for="field-{{ $field->name }}" class="col-md-2 col-form-label text-md-right">{{ $field->label }}</label>
 
     <div class="col-md-10">
-        <div class="row">
-            <div class="col-md-8">
-                <input id="field-{{ $field->name }}" type="text" class="form-control{{ $errors->has($field->name) ? ' is-invalid' : '' }}"
-                       name="{{ $field->name }}" placeholder="{{ $field->placeholder ?: '' }}" {{ !empty($field->required) ? 'required' : '' }}
-                       value="{{ old($field->name) ?: (isset($value) ? $value : '') }}" {{ !empty($field->disabled) ? 'disabled' : '' }}>
-            </div>
-            <div class="col-md-4 text-right">
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#uploadModal{{ $field->name }}">
-                    Upload Image
-                </button>
-            </div>
-                <div class="col-md-12 pt-2 preview-image-{{ $field->name }} {{ empty($value) ? 'd-none' : '' }}">
-                    <img class="img-thumbnail" id="image-{{ $field->name }}" src='{{ empty($value) ? '' : $value }}' style="max-height: 250px; max-width:100%;" />
-                </div>
+        <div class="preview-image-{{ $field->name }} {{ empty($value) ? 'd-none' : '' }}">
+            <img class="img-thumbnail" id="image-{{ $field->name }}" src='{{ empty($value) ? '' : $value }}'
+                 style="max-height: 250px; max-width:100%;" />
+        </div>
+        <div class="w-full flex gap-4 items-stretch">
+            <input id="field-{{ $field->name }}" type="text" class="grow form-control{{ $errors->has($field->name) ? ' is-invalid' : '' }}"
+                   name="{{ $field->name }}" placeholder="{{ $field->placeholder ?: '' }}" {{ !empty($field->required) ? 'required' : '' }}
+                   value="{{ old($field->name) ?: (isset($value) ? $value : '') }}" {{ !empty($field->disabled) ? 'disabled' : '' }}>
+            <button type="button" class="shrink-0 btn btn-secondary" data-toggle="modal"
+                    data-target="#uploadModal{{ $field->name }}">
+                Upload Image
+            </button>
         </div>
         @if($field->help)
             <div class="help-text" style="padding: 6px 12px; color:#555;">{{ $field->help }}</div>

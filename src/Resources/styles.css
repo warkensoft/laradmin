@@ -1,8 +1,7 @@
 @import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
-/*@import "../../node_modules/bootstrap/dist/css/bootstrap.css";*/
 @import "../../node_modules/jquery-datetimepicker/build/jquery.datetimepicker.min.css";
 @import "../../node_modules/select2/dist/css/select2.css";
-@import "../../node_modules/summernote/dist/summernote.css";
+@import "../../node_modules/summernote/dist/summernote-lite.css";
 
 @tailwind base;
 @tailwind components;
@@ -13,10 +12,100 @@
 		@apply bg-gray-700;
 	}
 	.breadcrumb {
-		@apply p-4 rounded mb-4 flex gap-0 bg-gray-200 list-inside text-gray-500;
+		@apply p-4 rounded mb-4 flex gap-0 bg-gray-200 list-inside text-gray-600;
 	}
 	.breadcrumb a {
 		@apply text-blue-600 hover:underline;
+	}
+	.card {
+		@apply rounded border border-solid border-gray-300;
+	}
+	.card a {
+		@apply text-blue-600 hover:underline;
+	}
+	.card-header {
+		@apply bg-gray-100 p-4 flex justify-between items-center border-b border-solid border-gray-300;
+	}
+	.card-body {
+		@apply p-4;
+	}
+	.navbar-brand {
+		@apply text-xl;
+	}
+	.table {
+		@apply w-full;
+	}
+	.table-hover tr {
+		@apply hover:bg-gray-200 border-b border-solid border-gray-300;
+	}
+	.table td, .table th {
+		@apply p-2;
+	}
+	.table th {
+		@apply text-left;
+	}
+	.form-inline {
+		@apply flex flex-row;
+	}
+	.form-control {
+		@apply w-full px-2 py-1 rounded border border-solid border-gray-300 text-gray-600;
+	}
+	.form-group {
+		@apply w-full flex gap-8 mb-4 items-stretch;
+	}
+	.form-group label {
+		@apply text-right shrink-0;
+	}
+	/*.form-group div {*/
+	/*	@apply w-full;*/
+	/*}*/
+	.form-group input, .form-group select, .form-group textarea {
+		@apply px-2 py-1 h-auto;
+	}
+	.form-group .select2-container .select2-selection--single {
+		@apply px-2 py-1 h-auto flex justify-between;
+	}
+	.form-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+		@apply relative;
+	}
+	.form-group .col-md-2 {
+		@apply w-1/5;
+	}
+	.form-group .col-md-10 {
+		@apply w-4/5;
+	}
+	.help-text {
+		@apply text-sm italic text-gray-500;
+	}
+	.btn {
+		@apply border border-solid border-gray-300 rounded px-4 py-2 inline-block align-middle;
+	}
+	a.btn {
+		@apply no-underline hover:no-underline;
+	}
+	.btn-outline-success {
+		@apply border-green-600 text-green-600 hover:bg-green-600 hover:text-white;
+	}
+	.card .btn-success {
+		@apply bg-green-600 text-white hover:bg-green-800;
+	}
+	.card .btn-warning {
+		@apply bg-yellow-500 text-white hover:bg-yellow-700;
+	}
+	.card .btn-danger {
+		@apply bg-red-600 text-white hover:bg-red-800;
+	}
+	.card .btn-info {
+		@apply bg-cyan-600 text-white hover:bg-cyan-800;
+	}
+	.btn-sm {
+		@apply text-sm px-2 py-1;
+	}
+	.btn-primary {
+		@apply text-white bg-blue-500 hover:bg-blue-700;
+	}
+	.btn-secondary {
+		@apply text-white bg-gray-500 hover:bg-gray-700;
 	}
 }
 
