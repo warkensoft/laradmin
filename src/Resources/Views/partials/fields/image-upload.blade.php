@@ -10,8 +10,8 @@
             <input id="field-{{ $field->name }}" type="text" class="grow form-control{{ $errors->has($field->name) ? ' is-invalid' : '' }}"
                    name="{{ $field->name }}" placeholder="{{ $field->placeholder ?: '' }}" {{ !empty($field->required) ? 'required' : '' }}
                    value="{{ old($field->name) ?: (isset($value) ? $value : '') }}" {{ !empty($field->disabled) ? 'disabled' : '' }}>
-            <button type="button" class="shrink-0 btn btn-secondary" data-toggle="modal"
-                    data-target="#uploadModal{{ $field->name }}">
+            <button type="button" class="shrink-0 btn btn-secondary"
+                    onclick="$('#uploadModal{{ $field->name }}').toggleClass('show')">
                 Upload Image
             </button>
         </div>
@@ -32,11 +32,12 @@
     @parent
     <!-- Modal -->
     <div class="modal fade" id="uploadModal{{ $field->name }}" tabindex="-1" role="dialog" aria-labelledby="uploadModal{{ $field->name }}Label" aria-hidden="true">
+        <div class="modal-bg"></div>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="uploadModal{{ $field->name }}Label">Upload Image</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" onclick="$('#uploadModal{{ $field->name }}').removeClass('show')" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -53,7 +54,7 @@
                     <div class="output" style="font-weight: bold; color: #dd0000;"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary"  onclick="$('#uploadModal{{ $field->name }}').removeClass('show')">Close</button>
                     <button type="button" class="btn btn-primary" data-fieldname="{{ $field->name }}">Upload</button>
                 </div>
             </div>
@@ -86,7 +87,7 @@
 
                     $('#field-' + fieldname).val(data);
                     $('#image-' + fieldname).attr('src', data);
-                    $('#uploadModal{{ $field->name }}').modal('hide');
+                    $('#uploadModal{{ $field->name }}').removeClass('show')
                 },
                 error:function(data)
                 {

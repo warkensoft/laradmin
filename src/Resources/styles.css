@@ -107,6 +107,28 @@
 	.btn-secondary {
 		@apply text-white bg-gray-500 hover:bg-gray-700;
 	}
+
+	.modal {
+		@apply sticky hidden top-0 bottom-0 w-full h-screen ;
+	}
+	.modal .modal-bg {
+		@apply absolute top-0 h-screen w-full opacity-50 bg-black;
+	}
+	.modal.show {
+		@apply flex items-center;
+	}
+	.modal-dialog {
+		@apply mx-auto w-1/3 z-50 bg-white border border-solid border-gray-800 rounded;
+	}
+	.modal-header {
+		@apply text-xl p-4 flex justify-between border-b border-solid border-gray-200;
+	}
+	.modal-body {
+		@apply text-lg p-4;
+	}
+	.modal-footer {
+		@apply p-4 text-right border-t border-solid border-gray-200;
+	}
 }
 
 .breadcrumb li::before {
