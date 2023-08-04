@@ -8,45 +8,28 @@
         </x-laradmin::notification>
     @endif
 
-          <!-- Breadcrumbs-->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="{{ route( config('laradmin.adminpath') . '.dashboard' ) }}">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Overview</li>
-          </ol>
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ route( config('laradmin.adminpath') . '.dashboard' ) }}">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Overview</li>
+    </ol>
 
-          <!-- Icon Cards-->
-          <div class="row">
 
-            @foreach(config('laradmin.crudable') as $model => $parameters)
+    <div class="grid grid-cols-3 gap-4">
 
-              @if($loop->index % 4 == 0)
-          </div><div class="row">
-            @endif
+        @foreach(config('laradmin.crudable') as $model => $parameters)
 
-            <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white {{ collect(['bg-primary', 'bg-success', 'bg-warning', 'bg-danger'])->get($loop->index % 4) }} o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-fw {{ !empty($parameters['nav_icon']) ? $parameters['nav_icon'] : 'fa-file-alt' }}"></i>
-                  </div>
-                  <div class="mr-5">{{ $model::count() }} {{ $parameters['nav_title'] }}!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1"
-                   href="{{ route(config('laradmin.adminpath') . '.' . $parameters['route'] . '.index') }}">
-                  <span class="float-left">View Details</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-            @endforeach
+            <a class="rounded-lg bg-indigo-200 p-8 relative overflow-hidden hover:underline hover:bg-indigo-800 hover:text-white"
+               href="{{ route(config('laradmin.adminpath') . '.' . $parameters['route'] . '.index') }}">
+                <i class="absolute right-[-5px] top-[-5px] text-6xl opacity-10 rotate-12 fas fa-fw {{ !empty($parameters['nav_icon']) ? $parameters['nav_icon'] : 'fa-file-alt' }}"></i>
+                <p class="text-3xl">{{ $model::count() }} {{ $parameters['nav_title'] }}</p>
+                <button>View List</button>
+            </a>
 
-          </div>
+        @endforeach
 
-@endsection
+    </div>
 
-@section('scripts')
 @endsection
