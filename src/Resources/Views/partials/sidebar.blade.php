@@ -1,4 +1,4 @@
-<div class="flex flex-col w-1/6 bg-gray-800 p-4 text-gray-400 text-lg gap-6">
+<div class="flex flex-col w-1/6 shrink-0 bg-gray-800 p-4 text-gray-400 text-lg gap-6">
     <a href="{{ route(config('laradmin.adminpath') . '.dashboard') }}"
        class="hover:text-white {{ request()->routeIs(config('laradmin.adminpath') . '.dashboard') ? 'text-white' : '' }}">
         <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a>

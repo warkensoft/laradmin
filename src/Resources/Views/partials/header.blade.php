@@ -1,5 +1,5 @@
 
-    <nav class="flex pl-4 pr-8 py-4 bg-gray-700 sticky top-0 justify-between gap-4">
+    <nav class="flex pl-4 pr-8 py-4 bg-gray-700 sticky top-0 justify-between gap-4 z-50">
 
       <a class="text-white text-xl mr-1" href="{{ route( config('laradmin.adminpath') . '.dashboard' ) }}"><i class="fa-solid fa-screwdriver-wrench"></i> {{ config('app.name', 'Laravel') }}</a>
 

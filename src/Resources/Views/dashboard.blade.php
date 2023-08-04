@@ -2,10 +2,10 @@
 
 @section('content')
 
-    @if (session('status'))
-        <div class="alert alert-success">
+    @if ($message = session('status'))
+        <x-laradmin::notification class="text-green-800 bg-green-100">
             {{ session('status') }}
-        </div>
+        </x-laradmin::notification>
     @endif
 
           <!-- Breadcrumbs-->

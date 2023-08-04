@@ -12,9 +12,24 @@
 	.navbar {
 		@apply bg-gray-700;
 	}
-
+	.breadcrumb {
+		@apply p-4 rounded mb-4 flex gap-0 bg-gray-200 list-inside text-gray-500;
+	}
+	.breadcrumb a {
+		@apply text-blue-600 hover:underline;
+	}
 }
 
+.breadcrumb li::before {
+	content: '/';
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+.breadcrumb li:first-child::before {
+	content: '';
+	padding-left: 0;
+	padding-right: 0.5rem;
+}
 
 .scroll-to-top {
 	position: fixed;
