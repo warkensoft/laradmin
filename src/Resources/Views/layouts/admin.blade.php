@@ -16,44 +16,27 @@
 
   </head>
 
-  <body id="page-top">
+  <body id="page-top" class="min-h-screen flex flex-col">
 
     @include('laradmin::partials.header')
 
-    <div id="wrapper">
+    <div class="grow flex w-full">
 
       @include('laradmin::partials.sidebar')
 
-      <div id="content-wrapper">
+      <div class="grow relative">
 
-        <div class="container-fluid">
+        <div class="p-4">
 
         @include('laradmin::partials.notifications')
         @yield('content')
-
-          {{--<!-- Breadcrumbs-->--}}
-          {{--<ol class="breadcrumb">--}}
-            {{--<li class="breadcrumb-item">--}}
-              {{--<a href="index.html">Dashboard</a>--}}
-            {{--</li>--}}
-            {{--<li class="breadcrumb-item active">Blank Page</li>--}}
-          {{--</ol>--}}
-
-          {{--<!-- Page Content -->--}}
-          {{--<h1>Blank Page</h1>--}}
-          {{--<hr>--}}
-          {{--<p>This is a great starting point for new custom pages.</p>--}}
 
         </div>
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © {{ config('app.name', 'Laravel') }} {{ date('Y') }}</span>
-            </div>
-          </div>
+        <footer class="absolute w-full bottom-0 text-center p-4 bg-gray-700 text-white">
+          Copyright © {{ config('app.name', 'Laravel') }} {{ date('Y') }}
         </footer>
 
       </div>
