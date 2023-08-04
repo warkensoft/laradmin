@@ -1,79 +1,49 @@
 @section('notifications')
 
     @if (!empty($errors) AND count($errors) > 0)
-        <div class="row notifications notifications-warning">
-            <div class="col-sm-12">
-                <div class="alert alert-warning ">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>@lang('laradmin::laradmin.warning')</strong>:
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <x-laradmin::notification class="text-red-800 bg-red-100">
+        <x-slot:title> @lang('laradmin::laradmin.warning') </x-slot:title>
+        <ul>
+            @foreach ($errors as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </x-laradmin::notification>
     @endif
 
     @if ($message = Session::get('success'))
-        <div class="row notifications notifications-success">
-            <div class="col-sm-12">
-                <div class="alert alert-success ">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {!! nl2br($message) !!}
-                </div>
-            </div>
-        </div>
+        <x-laradmin::notification class="text-green-800 bg-green-100">
+            {!! nl2br($message) !!}
+        </x-laradmin::notification>
     @endif
 
     @if ($message = Session::get('error'))
-        <div class="row notifications notifications-error">
-            <div class="col-sm-12">
-                <div class="alert alert-danger ">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>@lang('laradmin::laradmin.error')</strong>:
-                    {!! nl2br($message) !!}
-                </div>
-            </div>
-        </div>
+        <x-laradmin::notification class="text-red-800 bg-red-100">
+            <x-slot:title> @lang('laradmin::laradmin.error') </x-slot:title>
+            {!! nl2br($message) !!}
+        </x-laradmin::notification>
     @endif
 
     @if ($message = Session::get('warning'))
-        <div class="row  notifications notifications-warning">
-            <div class="col-sm-12">
-                <div class="alert alert-warning ">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>@lang('laradmin::laradmin.warning')</strong>:
-                    {!! nl2br($message) !!}
-                </div>
-            </div>
-        </div>
+        <x-laradmin::notification class="text-amber-800 bg-amber-100">
+            <x-slot:title> @lang('laradmin::laradmin.warning') </x-slot:title>
+            {!! nl2br($message) !!}
+        </x-laradmin::notification>
     @endif
 
     @if ($message = Session::get('info'))
-        <div class="row notifications notifications-info">
-            <div class="col-sm-12">
-                <div class="alert alert-info ">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {!! nl2br($message) !!}
-                </div>
-            </div>
-        </div>
+        <x-laradmin::notification class="text-blue-800 bg-blue-100">
+            {!! nl2br($message) !!}
+        </x-laradmin::notification>
     @endif
 
     @if ($message = Session::get('message'))
-        <div class="row notifications notifications-message">
-            <div class="col-sm-12">
-                <div class="alert alert-info ">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    @if($message_title = Session::get('message_title'))
-                        <strong>{{ $message_title }}</strong> :
-                    @endif
-                    {!! nl2br($message) !!}
-                </div>
-            </div>
-        </div>
+        <x-laradmin::notification class="text-indigo-800 bg-indigo-100">
+            @if($message_title = Session::get('message_title'))
+            <x-slot:title>{{ Session::get('message_title') }}</x-slot:title>
+            @endif
+            {!! nl2br($message) !!}
+        </x-laradmin::notification>
     @endif
 
 @show
