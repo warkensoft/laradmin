@@ -1,7 +1,10 @@
-✨ Built in 95ms
+Building...
+Bundling...
+Packaging & Optimizing...
+✨ Built in 495ms
 
 src/Resources/Assets/Theme/scripts.js                           373.54 KB    239ms
-src/Resources/Assets/Theme/styles.css                           166.15 KB     38ms
+src/Resources/Assets/Theme/styles.css                           199.04 KB     34ms
 src/Resources/Assets/Theme/fa-brands-400.91a08dbe.woff2         105.49 KB     63ms
 src/Resources/Assets/Theme/fa-brands-400.ebc41dfb.ttf           182.82 KB     44ms
 src/Resources/Assets/Theme/fa-regular-400.34250813.woff2         24.36 KB     92ms
