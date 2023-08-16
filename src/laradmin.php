@@ -182,6 +182,13 @@ return [
 //				'status' => 'Status',
 //			],
 //
+//          // Show a widget on the dashboard for this model.
+//          'dashboard-widget' => [
+//              'title',
+//              'status',
+//              'updated_at',
+//          ],
+//
 //			// Define the default sort order for the model index.
 //			'sort'      => [
 //				'key' => 'published_at',    // Sort field name

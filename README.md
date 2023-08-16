@@ -143,7 +143,14 @@ in order to edit the records. See Field Configuration for more details on the fi
 				'email' => 'Email Address',
 			],
 
-			// Define the default sort order for the model index.
+            // Show a widget on the dashboard for this model.
+            'dashboard-widget' => [
+                'name',
+                'email',
+                'created_at',
+            ],
+
+			// Define the default sort order for the model index and dashboard widget.
 			'sort'      => [
 				'key' => 'name',    // Sort field name
 				'dir' => 'asc',     // Sort field direction
