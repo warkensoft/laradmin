@@ -25,7 +25,7 @@
         "parcel": "^2.9.3",
         "postcss": "^8.4.27",
         "select2": "^4.1.0-rc.0",
-        "summernote": "0.8.16",
+        "summernote": "0.8.20",
         "tailwindcss": "^3.3.3"
     }
 }
