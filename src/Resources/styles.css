@@ -86,6 +86,9 @@
 	.btn-outline-success {
 		@apply border-green-600 text-green-600 hover:bg-green-600 hover:text-white;
 	}
+	.card a.btn {
+		@apply text-white;
+	}
 	.card .btn-success {
 		@apply bg-green-600 text-white hover:bg-green-800;
 	}
