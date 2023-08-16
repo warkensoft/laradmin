@@ -15,6 +15,12 @@ class LaradminService
 		}
 	}
 
+	public function HashedPath($path)
+	{
+		$buildHash = md5(file_get_contents( dirname(dirname(__DIR__)) . '/build.log' ));
+		return $path . '?' . $buildHash;
+	}
+
 	public function IsCurrentRoute($testRoute)
 	{
 		$route = explode('.', request()->route()->getName(), 3);

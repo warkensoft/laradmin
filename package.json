@@ -4,7 +4,7 @@
     "scripts": {
         "watch": "parcel watch --no-source-maps --no-hmr",
         "dev": "parcel build --no-source-maps --no-optimize",
-        "build": "parcel build --no-source-maps"
+        "build": "parcel build --no-source-maps > build.log"
     },
     "source": [
         "src/Resources/scripts.js",

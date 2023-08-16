@@ -11,7 +11,7 @@
 
     <title>@yield('head_title') {{ config('app.name', 'Laravel') }}</title>
 
-    <link href="/vendor/laradmin/Theme/styles.css" rel="stylesheet">
+    <link href="{{ Laradmin::HashedPath('/vendor/laradmin/Theme/styles.css') }}" rel="stylesheet">
     @yield('head')
 
   </head>
@@ -50,7 +50,7 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <script src="/vendor/laradmin/Theme/scripts.js"></script>
+    <script src="{{ Laradmin::HashedPath('/vendor/laradmin/Theme/scripts.js') }}"></script>
     @yield('scripts')
 
   </body>
