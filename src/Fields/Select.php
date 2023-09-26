@@ -9,7 +9,9 @@ class Select extends BaseField
 
 	public function filterValue($value)
 	{
-		if(empty($value))
+		if($value === '0')
+			return '0';
+		elseif(empty($value))
 			return '';
 		else
 			return $value;
