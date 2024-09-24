@@ -17,11 +17,11 @@ Install a new Laravel site using your preferred method. I enjoy using the `larav
 
 Use the commandline to change directory into your new site's root folder.
 
-### `$ composer require warkensoft/laradmin:2.*`
+### `$ composer require warkensoft/laradmin:^2.0`
 
 This will pull the Laradmin interface as a package into your new Laravel installation.
 
-### `$ php artisan vendor:publish --provider="Warkensoft\Laradmin\Provider" --tag=config`
+### `$ php artisan vendor:publish --provider="Warkensoft\Laradmin\Provider" --tag=config --tag=public`
 
 This will publish a sample laradmin.php file to your /config/ folder in the new site. You will use this file to 
 configure Laradmin for your website's needs.
