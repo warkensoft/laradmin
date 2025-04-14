@@ -1,8 +1,12 @@
 <?php namespace Warkensoft\Laradmin\Controllers;
 
-use Illuminate\Database\QueryException;
 use Warkensoft\Laradmin\Requests\CrudableRequest;
+use Illuminate\Database\QueryException;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Response;
+use App\User;
 
 class CrudableController extends Controller
 {
@@ -11,7 +15,7 @@ class CrudableController extends Controller
 	 *
 	 * @param CrudableRequest $crudableRequest
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return Response|View
 	 */
     public function index(CrudableRequest $crudableRequest)
     {
@@ -69,7 +73,7 @@ class CrudableController extends Controller
 	 *
 	 * @param CrudableRequest $crudableRequest
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return Response|View
 	 */
     public function create(CrudableRequest $crudableRequest)
     {
@@ -85,7 +89,7 @@ class CrudableController extends Controller
 	 *
 	 * @param CrudableRequest $crudableRequest
 	 *
-	 * @return \Illuminate\Http\Response
+	 * @return RedirectResponse
 	 */
     public function store(CrudableRequest $crudableRequest)
     {
@@ -114,8 +118,8 @@ class CrudableController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
+     * @param  User  $user
+     * @return Response|View
      */
     public function edit($model_id, CrudableRequest $crudableRequest)
     {
@@ -131,8 +135,8 @@ class CrudableController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
+     * @param  User  $user
+     * @return RedirectResponse
      */
     public function update($model_id, CrudableRequest $crudableRequest)
     {
@@ -162,8 +166,8 @@ class CrudableController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
+     * @param  User  $user
+     * @return RedirectResponse
      */
     public function destroy($model_id, CrudableRequest $crudableRequest)
     {
