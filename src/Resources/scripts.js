@@ -7,8 +7,6 @@ window.$ = window.jQuery = jQuery;
 require('jquery-easing');
 require('jquery-datetimepicker');
 
-require('summernote/dist/summernote-lite.js')
-
 import select2 from 'select2';
 select2();
 

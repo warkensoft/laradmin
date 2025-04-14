@@ -1,16 +1,15 @@
-✨ Built in 92ms
+Building...
+Bundling...
+Packaging & Optimizing...
+✨ Built in 723ms
 
-src/Resources/Assets/Theme/scripts.js                           373.54 KB    239ms
-src/Resources/Assets/Theme/styles.css                           199.25 KB     34ms
-src/Resources/Assets/Theme/fa-brands-400.91a08dbe.woff2         105.49 KB     63ms
-src/Resources/Assets/Theme/fa-brands-400.ebc41dfb.ttf           182.82 KB     44ms
-src/Resources/Assets/Theme/fa-regular-400.34250813.woff2         24.36 KB     92ms
-src/Resources/Assets/Theme/fa-regular-400.93df4952.ttf           62.45 KB     35ms
-src/Resources/Assets/Theme/fa-solid-900.977e2c2d.woff2          146.61 KB     64ms
-src/Resources/Assets/Theme/fa-solid-900.a3c6e01f.ttf            385.38 KB     51ms
-src/Resources/Assets/Theme/fa-v4compatibility.00538c5a.woff2      4.46 KB     28ms
-src/Resources/Assets/Theme/fa-v4compatibility.a2927300.ttf        9.93 KB     92ms
-src/Resources/Assets/Theme/summernote.e69a70d2.eot               11.79 KB     47ms
-src/Resources/Assets/Theme/summernote.3da3320f.woff2              6.01 KB     64ms
-src/Resources/Assets/Theme/summernote.73437ac4.woff               7.25 KB     63ms
-src/Resources/Assets/Theme/summernote.4f405e38.ttf               11.62 KB     44ms
+src/Resources/Assets/Theme/scripts.js                            221.2 KB    212ms
+src/Resources/Assets/Theme/styles.css                           171.34 KB     72ms
+src/Resources/Assets/Theme/fa-brands-400.91a08dbe.woff2         105.49 KB     36ms
+src/Resources/Assets/Theme/fa-brands-400.ebc41dfb.ttf           182.82 KB     31ms
+src/Resources/Assets/Theme/fa-regular-400.34250813.woff2         24.36 KB     24ms
+src/Resources/Assets/Theme/fa-regular-400.93df4952.ttf           62.45 KB     61ms
+src/Resources/Assets/Theme/fa-solid-900.977e2c2d.woff2          146.61 KB     55ms
+src/Resources/Assets/Theme/fa-solid-900.a3c6e01f.ttf            385.38 KB     40ms
+src/Resources/Assets/Theme/fa-v4compatibility.00538c5a.woff2      4.46 KB     31ms
+src/Resources/Assets/Theme/fa-v4compatibility.a2927300.ttf        9.93 KB     23ms
