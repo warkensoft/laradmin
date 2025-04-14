@@ -100,8 +100,15 @@ class CrudableController extends Controller
 		    return redirect()->back()->withInput()->with('error', $exception->getMessage());
 	    }
 
-	    return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
-	                     ->with('success', 'Success');
+		if( $crudableRequest->get('_return_after_save', false) ) {
+			session()->set('should_return_after_save_' . $crudable->route, true);
+			return redirect()->back()
+			                 ->with('success', 'Success');
+		} else {
+			session()->set('should_return_after_save_' . $crudable->route, false);
+			return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
+			                 ->with('success', 'Success');
+		}
     }
 
     /**
@@ -141,8 +148,15 @@ class CrudableController extends Controller
 		    return redirect()->back()->withInput()->with('error', $exception->getMessage());
 	    }
 
-	    return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
-	                     ->with('success', 'Success');
+	    if( $crudableRequest->get('_return_after_save', false) ) {
+		    session()->set('should_return_after_save_' . $crudable->route, true);
+		    return redirect()->back()
+		                     ->with('success', 'Success');
+	    } else {
+		    session()->set('should_return_after_save_' . $crudable->route, false);
+		    return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
+		                     ->with('success', 'Success');
+	    }
     }
 
     /**

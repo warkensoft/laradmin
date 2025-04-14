@@ -33,10 +33,16 @@
 
                 <div class="form-group row mb-0 flex gap-8">
                     <label class="col-md-2">&nbsp;</label>
-                    <div class="col-md-10">
+                    <div class="col-md-10 flex flex-row gap-8 items-center">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Save ' . $crudable->singular) }}
                         </button>
+                        <label class="flex flex-row items-center gap-2 text-md">
+                            <input type="checkbox" name="_return_after_save" value="true"
+                                   {{ session()->get('should_return_after_save_' . $crudable->route, false) ? 'checked' : '' }}
+                                   class="!h-6 !w-6"  />
+                            Return after save
+                        </label>
                     </div>
                 </div>
             </form>
