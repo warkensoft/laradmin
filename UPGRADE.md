@@ -1,5 +1,19 @@
 # Upgrade Guide
 
+## From 2.2.0 to 2.3.0
+
+The Summernote package has been removed in version 2.3.0 in favour of EasyMDE 
+to be included in future versions. Summernote v 0.9 appeared to be broken and
+also seemed to have broken deps.
+
+Future versions will prefer integrating EasyMDE for simple, clean, markdown-based 
+text editing.
+
+New styles and js were included with this version and will need to be published
+with the following:
+
+`php artisan vendor:publish --provider="Warkensoft\Laradmin\Provider" --tag=public --force`
+
 ## From 2.1.0 to 2.2.0
 
 In this version the dependency on Bootstrap CSS has been removed in favour
