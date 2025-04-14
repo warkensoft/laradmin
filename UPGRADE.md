@@ -38,6 +38,5 @@ management is now handled with `npm` and files are bundled using `parcel`.
 - jQuery - easing
 - jQuery - datetimepicker
 - select2
-- summernote
 
  

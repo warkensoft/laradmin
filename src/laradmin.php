@@ -115,14 +115,6 @@ return [
 //					'help'         => 'Leave blank to auto-generate the slug.',
 //				],
 //				[
-//					'type'        => \Warkensoft\Laradmin\Fields\Summernote::class,
-//					'name'        => 'content',
-//					'label'       => 'Content',
-//					'placeholder' => 'Start writing here...',
-//					'default'     => '',
-//					'rules'       => '',
-//				],
-//				[
 //					'type'        => \Warkensoft\Laradmin\Fields\Textarea::class,
 //					'name'        => 'teaser',
 //					'label'       => 'Teaser',

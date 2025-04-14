@@ -183,7 +183,6 @@ The `type` variable defines a Field class in the Laradmin interface. The followi
 - [\Warkensoft\Laradmin\Fields\Checkbox::class](docs/field-types.md#checkbox-field)
 - [\Warkensoft\Laradmin\Fields\DateTime::class](docs/field-types.md#datetime-field)
 - [\Warkensoft\Laradmin\Fields\ImageUpload::class](docs/field-types.md#imageupload-field)
-- [\Warkensoft\Laradmin\Fields\Summernote::class](docs/field-types.md#summernote-field)
 - [\Warkensoft\Laradmin\Fields\SelectFromMany::class](docs/field-types.md#selectfrommany-field)
 - [\Warkensoft\Laradmin\Fields\SelectManyFromMany::class](docs/field-types.md#selectmanyfrommany-field)
 

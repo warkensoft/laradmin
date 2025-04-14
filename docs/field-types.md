@@ -8,7 +8,6 @@ The following field types are available to you for use in your configuration fil
 - [\Warkensoft\Laradmin\Fields\Select::class](field-types.md#select-field)
 - [\Warkensoft\Laradmin\Fields\Checkbox::class](field-types.md#checkbox-field)
 - [\Warkensoft\Laradmin\Fields\DateTime::class](field-types.md#datetime-field)
-- [\Warkensoft\Laradmin\Fields\Summernote::class](field-types.md#summernote-field)
 - [\Warkensoft\Laradmin\Fields\ImageUpload::class](field-types.md#imageupload-field)
 - [\Warkensoft\Laradmin\Fields\SelectFromMany::class](field-types.md#selectfrommany-field)
 - [\Warkensoft\Laradmin\Fields\SelectManyFromMany::class](field-types.md#selectmanyfrommany-field)
@@ -155,20 +154,6 @@ This field type requires a DateTime field in your database.
 #### `format`
 
 Used to define the presentation format of the DateTime field when displayed on Laradmin index pages.
-
-
-## Summernote Field
-
-	'type'        => \Warkensoft\Laradmin\Fields\Summernote::class,
-	'name'        => 'body',
-	'label'       => 'Content',
-	'placeholder' => 'Write something amazing!',
-	'default'     => '',
-	'rules'       => 'required',
-	
-The summernote field accepts the same parameters as the regular [textarea field](field-types.md#textarea-field). 
-It presents the user with a WYSIWYG input area where text may be entered and formatted by using the excellent 
-[Summernote](https://summernote.org/) library.
 
 
 ## ImageUpload Field

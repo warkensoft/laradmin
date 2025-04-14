@@ -1,4 +1,4 @@
 # Laradmin
 
-[ ] Replace jQuery with AlpineJS (except for Summernote, I guess)
+[ ] Replace jQuery with AlpineJS
 [ ] Improve the dashboard home layout
