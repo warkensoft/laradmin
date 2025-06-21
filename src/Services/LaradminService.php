@@ -11,7 +11,8 @@ class LaradminService
 		{
 			$route = $config['route'];
 			$controller = isset($config['controller']) ? $config['controller'] : CrudableController::class;
-			Route::resource( $route, $controller, ['as' => config('laradmin.adminpath')] );
+			Route::resource( $route, $controller, ['as' => config('laradmin.adminpath')] )
+			     ->middleware( $config['middleware'] ?? config('laradmin.middleware') );
 		}
 	}
 

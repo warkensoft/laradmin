@@ -27,12 +27,14 @@ return [
 
 //		// Sample entry for a standard laravel user record.
 //		'\\App\\Models\\User' => [
-//			'path'      => 'users', // The path to the model under /laradmin/
-//			'route'     => 'users', // The route name used for the model
-//			'nav_title' => 'Users', // The title used in the navigation sidebar
-//			'plural'    => 'Users', // The plural form of the model
-//			'singular'  => 'User',  // The singular form of the model
-//			'nav_icon'  => 'fa-users',  // The font-awesome icon for admin nav elements
+//			'path'       => 'users', // The path to the model under /laradmin/
+//			'route'      => 'users', // The route name used for the model
+//			'nav_title'  => 'Users', // The title used in the navigation sidebar
+//			'plural'     => 'Users', // The plural form of the model
+//			'singular'   => 'User',  // The singular form of the model
+//			'nav_icon'   => 'fa-users',  // The font-awesome icon for admin nav elements
+//			'controller' => YourCustomController::class,  // Optional replacement of the controller.
+//			'middleware' => ['sample-custom-middleware'], // Optional... defaults to `config('laradmin.middleware')` above
 //
 //			// Fields used for model data
 //			'fields'    => [
