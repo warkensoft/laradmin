@@ -2,6 +2,8 @@
 export default {
   content: ["./src/Resources/Views/**/*.{html,js,php}"],
   safelist: [
+    'prose',
+    'lg:prose-xl',
     'text-2xl',
     'text-3xl',
     'text-white',
@@ -15,6 +17,8 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+      require('@tailwindcss/typography'),
+    ],
 }
 
