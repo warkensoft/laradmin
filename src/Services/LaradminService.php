@@ -13,6 +13,10 @@ class LaradminService
 			$controller = isset($config['controller']) ? $config['controller'] : CrudableController::class;
 			Route::resource( $route, $controller, ['as' => config('laradmin.adminpath')] )
 			     ->middleware( $config['middleware'] ?? config('laradmin.middleware') );
+
+			Route::post($route . '/{id}/copy', [$controller, 'copy'])
+			     ->name(config('laradmin.adminpath') . '.' . $route . '.copy')
+			     ->middleware( $config['middleware'] ?? config('laradmin.middleware') );
 		}
 	}
 

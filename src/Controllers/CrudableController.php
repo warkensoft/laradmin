@@ -1,5 +1,6 @@
 <?php namespace Warkensoft\Laradmin\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Warkensoft\Laradmin\Requests\CrudableRequest;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
@@ -185,5 +186,21 @@ class CrudableController extends Controller
 	    return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
 	                     ->with('success', 'Success');
     }
+
+	/**
+	 * Copy the specified resource in storage.
+	 */
+	public function copy($model_id, CrudableRequest $crudableRequest)
+	{
+		$crudable = $crudableRequest->crudable()
+		                            ->load($model_id);
+		$thecopy = $crudable->model()
+		                    ->replicate()
+		                    ->save();
+
+		return redirect()->route( config('laradmin.adminpath') . '.' . $crudable->route . '.index')
+		                 ->with('success', 'Success');
+
+	}
 
 }
